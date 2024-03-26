@@ -35,8 +35,28 @@ class Database
         $statement->execute();
     }
 
-    public function read()
+    //WARNING: This function is vulnerable to sql injection.
+    //Selects all columns by default
+    //Has no where clause by default
+    public function read($table, $columns = [], $where = [])
     {
+        if (count($columns) > 0) {
+            $columns_imploded = implode(", ", $columns);
+        } else {
+            $columns_imploded = "*";
+        }
+
+        $sql = "SELECT " . $columns_imploded . " FROM " . $table;
+
+        if (count($where) > 0) {
+            $where_imploded = implode(" AND ", $where);
+            $sql .= " WHERE " . $where_imploded;
+        }
+
+        $statement = $this->pdo->query($sql);
+        $fetchAll = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $fetchAll;
     }
 
     public function update()
