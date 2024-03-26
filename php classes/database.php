@@ -19,17 +19,16 @@ class Database
         }
     }
 
-    //WARNING: This function is vulnerable to sql injection.
+    //WARNING: This function is vulnerable to sql injection if table and columns are set by user.
     //column_value_pairs is an associative array: [column => value]
     public function create($table, $column_value_pairs)
     {
         $columns = array_keys($column_value_pairs);
         $columns_imploded = implode(", ", $columns);
-        $values = array_values($column_value_pairs);
-        $values_imploded = "'" . implode("', '", $values) . "'";
-        $sql = "INSERT INTO $table ($columns_imploded) VALUES ($values_imploded)";
-        $statement = $this->pdo->query($sql);
-        return $statement;
+        $placeholders = ":" . implode(', :', $columns);
+        $sql = "INSERT INTO $table ($columns_imploded) VALUES ($placeholders)";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($column_value_pairs);
     }
 
     //WARNING: This function is vulnerable to sql injection.
