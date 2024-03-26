@@ -31,6 +31,24 @@ class Database
         $statement->execute($column_value_pairs);
     }
 
+    //$where is an associative array: [column => value]
+    //$where only works with simple equals operations
+    //returns both sql and bound values
+    private function create_where_clause($where){
+        if (count($where) > 0) {
+            $where_conditions = [];
+            $where_values = [];
+
+            foreach ($where as $column => $value) {
+                $where_conditions[] = "$column = :$column" . "_value";
+                $where_values[$column . "_value"] = $value;
+            }
+            
+            $where_conditions_imploded = implode(" AND ", $where_conditions);
+            return ["sql" => " WHERE " . $where_conditions_imploded, "values" => $where_values];
+        }
+    }
+
     //WARNING: This function is vulnerable to sql injection if table, columns or where_columns are set by user
     //Selects all columns by default
     //Has no where clause by default
@@ -40,29 +58,17 @@ class Database
     {
         $columns_imploded = implode(", ", $columns);
         $sql = "SELECT " . $columns_imploded . " FROM " . $table;
-
-        if (count($where) > 0) {
-            $where_conditions = [];
-            $where_columns = array_keys($where);
-            foreach ($where_columns as $where_column) {
-                $where_conditions[] = "$where_column = :$where_column" . "_value";
-            }
-            $where_conditions_imploded = implode(" AND ", $where_conditions);
-            $sql .= " WHERE " . $where_conditions_imploded;
-        }
-
+        $where = $this->create_where_clause($where);
+        $sql .= $where["sql"];
         $statement = $this->pdo->prepare($sql);
-        $where_values = [];
-        foreach ($where as $column => $value) {
-            $where_values[$column . "_value"] = $value;
-        }
-        $statement->execute($where_values);
+        $statement->execute($where["values"]);
         $fetchAll = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $fetchAll;
     }
 
-    public function update()
+    public function update($table, $column_value_pairs, $where)
     {
+        $sql = "UPDATE $table SET  WHERE 1";
     }
 
     public function delete()
