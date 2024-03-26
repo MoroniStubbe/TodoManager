@@ -19,8 +19,8 @@ class Database
         }
     }
 
-    //WARNING: This function is vulnerable to sql injection if table and columns are set by user.
-    //column_value_pairs is an associative array: [column => value]
+    //WARNING: This function is vulnerable to sql injection if table and columns are set by user
+    //$column_value_pairs is an associative array: [column => value]
     public function create($table, $column_value_pairs)
     {
         $columns = array_keys($column_value_pairs);
@@ -31,27 +31,33 @@ class Database
         $statement->execute($column_value_pairs);
     }
 
-    //WARNING: This function is vulnerable to sql injection.
+    //WARNING: This function is vulnerable to sql injection if table, columns or where_columns are set by user
     //Selects all columns by default
     //Has no where clause by default
-    public function read($table, $columns = [], $where = [])
+    //$where is an associative array: [column => value]
+    //$where only works with simple equals operations
+    public function read($table, $columns = ["*"], $where = [])
     {
-        if (count($columns) > 0) {
-            $columns_imploded = implode(", ", $columns);
-        } else {
-            $columns_imploded = "*";
-        }
-
+        $columns_imploded = implode(", ", $columns);
         $sql = "SELECT " . $columns_imploded . " FROM " . $table;
 
         if (count($where) > 0) {
-            $where_imploded = implode(" AND ", $where);
-            $sql .= " WHERE " . $where_imploded;
+            $where_conditions = [];
+            $where_columns = array_keys($where);
+            foreach ($where_columns as $where_column) {
+                $where_conditions[] = "$where_column = :$where_column" . "_value";
+            }
+            $where_conditions_imploded = implode(" AND ", $where_conditions);
+            $sql .= " WHERE " . $where_conditions_imploded;
         }
 
-        $statement = $this->pdo->query($sql);
+        $statement = $this->pdo->prepare($sql);
+        $where_values = [];
+        foreach ($where as $column => $value) {
+            $where_values[$column . "_value"] = $value;
+        }
+        $statement->execute($where_values);
         $fetchAll = $statement->fetchAll(PDO::FETCH_ASSOC);
-
         return $fetchAll;
     }
 
