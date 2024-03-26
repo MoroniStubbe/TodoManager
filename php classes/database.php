@@ -47,6 +47,9 @@ class Database
             $where_conditions_imploded = implode(" AND ", $where_conditions);
             return ["sql" => " WHERE " . $where_conditions_imploded, "values" => $where_values];
         }
+        else{
+            return ["sql" => "", "values" => []];
+        }
     }
 
     //WARNING: This function is vulnerable to sql injection if table, columns or where_columns are set by user
