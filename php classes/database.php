@@ -34,21 +34,19 @@ class Database
     //$where is an associative array: [column => value]
     //$where only works with simple equals operations
     //returns both sql and bound values
-    private function create_where_clause($where){
+    private function create_where_clause($where)
+    {
         if (count($where) > 0) {
             $where_conditions = [];
-            $where_values = [];
 
             foreach ($where as $column => $value) {
-                $where_conditions[] = "$column = :$column" . "_value";
-                $where_values[$column . "_value"] = $value;
+                $where_conditions[] = "$column = :$column";
             }
-            
+
             $where_conditions_imploded = implode(" AND ", $where_conditions);
-            return ["sql" => " WHERE " . $where_conditions_imploded, "values" => $where_values];
-        }
-        else{
-            return ["sql" => "", "values" => []];
+            return " WHERE " . $where_conditions_imploded;
+        } else {
+            return "";
         }
     }
 
@@ -60,11 +58,10 @@ class Database
     public function read($table, $columns = ["*"], $where = [])
     {
         $columns_imploded = implode(", ", $columns);
-        $sql = "SELECT " . $columns_imploded . " FROM " . $table;
-        $where = $this->create_where_clause($where);
-        $sql .= $where["sql"];
+        $where_sql = $this->create_where_clause($where);
+        $sql = "SELECT " . $columns_imploded . " FROM " . $table . $where_sql;
         $statement = $this->pdo->prepare($sql);
-        $statement->execute($where["values"]);
+        $statement->execute($where);
         $fetchAll = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $fetchAll;
     }
