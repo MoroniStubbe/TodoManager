@@ -33,7 +33,7 @@ class Database
 
     //$where is an associative array: [column => value]
     //$where only works with simple equals operations
-    //returns both sql and bound values
+    //returns sql string
     private function create_where_clause($where)
     {
         if (count($where) > 0) {
