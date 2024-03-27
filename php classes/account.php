@@ -30,4 +30,25 @@ class Account
 
         return false;
     }
+
+    //returns true on success
+    public function create()
+    {
+        if ($this->username !== "" and $this->password !== "") {
+            if ($this->read()) {
+                $this->database->create(
+                    $this->table,
+                    [
+                        "username" => $this->username,
+                        "password_hash" => password_hash($this->password, PASSWORD_DEFAULT)
+                    ]
+                );
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
