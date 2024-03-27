@@ -77,7 +77,7 @@ class Database
         foreach ($column_value_pairs as $column => $value) {
             $sets[] = "$column = :$column";
         }
-        
+
         $set_sql = implode(", ", $sets);
         $where_sql = $this->create_where_clause($where);
         $sql = "UPDATE $table SET $set_sql" . $where_sql;
@@ -85,7 +85,15 @@ class Database
         $statement->execute(array_merge($column_value_pairs, $where));
     }
 
-    public function delete()
+    //WARNING: This function is vulnerable to sql injection if table or where_columns are set by user
+    //Has no where clause by default
+    //$where is an associative array: [column => value]
+    //$where only works with simple equals operations
+    public function delete($table, $where = [])
     {
+        $where_sql = $this->create_where_clause($where);
+        $sql = "DELETE FROM $table" . $where_sql;
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($where);
     }
 }
