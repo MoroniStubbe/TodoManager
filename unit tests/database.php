@@ -12,3 +12,6 @@ $database = new Database("localhost", "todo_manager", "root", "");
 
 //Test update()
 // $database->update("accounts", ["first_name" => "qwe", "last_name" => "qwe"], ["id" => 3]);
+
+//Test delete()
+// $database->delete("accounts", ["id" => 4]);
