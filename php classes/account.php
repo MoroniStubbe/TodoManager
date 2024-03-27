@@ -7,6 +7,7 @@ class Account
     public $id;
     public $username = "";
     public $password = "";
+    public $password_hash = "";
 
     public function __construct($database)
     {
