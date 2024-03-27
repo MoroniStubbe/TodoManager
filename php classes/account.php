@@ -17,15 +17,19 @@ class Account
     //returns true if account was found
     public function read()
     {
-        $account = [];
+        $accounts = [];
 
         if ($this->id !== null) {
-            $account = $this->database->read($this->table, where: ["id" => $this->id])[0];
-            $this->username = $account["username"];
-            return true;
+            $accounts = $this->database->read($this->table, where: ["id" => $this->id]);
         } else if ($this->username !== "") {
-            $account = $this->database->read($this->table, where: ["username" => $this->username])[0];
+            $accounts = $this->database->read($this->table, where: ["username" => $this->username]);
+        }
+
+        if(count($accounts) > 0){
+            $account = $accounts[0];
             $this->id = $account["id"];
+            $this->username = $account["username"];
+            $this->password_hash = $account["password_hash"];
             return true;
         }
 
