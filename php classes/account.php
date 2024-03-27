@@ -8,6 +8,7 @@ class Account
     public $username = "";
     public $password = "";
     public $password_hash = "";
+    public $logged_in = false;
 
     public function __construct($database)
     {
@@ -25,7 +26,7 @@ class Account
             $accounts = $this->database->read($this->table, where: ["username" => $this->username]);
         }
 
-        if(count($accounts) > 0){
+        if (count($accounts) > 0) {
             $account = $accounts[0];
             $this->id = $account["id"];
             $this->username = $account["username"];
@@ -52,5 +53,16 @@ class Account
         } else {
             return false;
         }
+    }
+
+    //returns true on login success
+    public function log_in()
+    {
+        if (!$this->logged_in and $this->read() and password_verify($this->password, $this->password_hash)) {
+            $this->logged_in = true;
+            return true;
+        }
+
+        return false;
     }
 }
