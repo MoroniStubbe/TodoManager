@@ -40,12 +40,13 @@ class Account
     public function create()
     {
         if ($this->username !== "" and $this->password !== "") {
-            if ($this->read()) {
+            if (!$this->read()) {
+                $this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
                 $this->database->create(
                     $this->table,
                     [
                         "username" => $this->username,
-                        "password_hash" => password_hash($this->password, PASSWORD_DEFAULT)
+                        "password_hash" => $this->password_hash
                     ]
                 );
                 return true;
