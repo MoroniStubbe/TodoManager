@@ -70,9 +70,9 @@ class Account
     }
 
     //returns true if login was successful
-    public function log_in()
+    public function log_in($password)
     {
-        if (!$this->logged_in and $this->read() and password_verify($this->password, $this->password_hash)) {
+        if (!$this->logged_in and $this->read($this->id) and password_verify($password, $this->password_hash)) {
             $this->logged_in = true;
             return true;
         }
