@@ -38,10 +38,9 @@ class Account
     //returns true if account was created
     public function create()
     {
-        if ($this->username !== "" and $this->validate_password() and !$this->read()) {
-            $this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
+        if ($this->username !== "" and $this->password_hash !== "" and !$this->read(username: $this->username)) {
             $this->database->create(
-                $this->table,
+                "accounts",
                 [
                     "username" => $this->username,
                     "password_hash" => $this->password_hash
