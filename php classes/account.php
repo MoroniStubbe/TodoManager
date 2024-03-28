@@ -37,10 +37,20 @@ class Account
         return false;
     }
 
-    //returns true on success
+    //returns true if password is valid
+    public function validate_password()
+    {
+        if (strlen($this->password) > 11 and !str_contains($this->password, " ")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    //returns true if account was created
     public function create()
     {
-        if ($this->username !== "" and $this->password !== "" and !$this->read()) {
+        if ($this->username !== "" and $this->validate_password() and !$this->read()) {
             $this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
             $this->database->create(
                 $this->table,
