@@ -118,6 +118,14 @@ class Account
         return false;
     }
 
+    public function change_password($password){
+        if($this->logged_in and $this->set_password($password)){
+            return true;
+        }
+
+        return false;
+    }
+
     //returns true if login was successful
     public function log_in($password)
     {
