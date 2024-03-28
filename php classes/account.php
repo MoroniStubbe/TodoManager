@@ -58,15 +58,15 @@ class Account
     {
         $column_value_pairs = [];
 
-        if(in_array("username", $columns)){
+        if (in_array("username", $columns)) {
             $column_value_pairs["username"] = $this->username;
         }
 
-        if(in_array("password_hash", $columns)){
+        if (in_array("password_hash", $columns)) {
             $column_value_pairs["password_hash"] = $this->password_hash;
         }
 
-        $this->database->update($this->table, $column_value_pairs, ["id" => $this->id]);
+        $this->database->update("accounts", $column_value_pairs, ["id" => $this->id]);
     }
 
     //returns true if login was successful
