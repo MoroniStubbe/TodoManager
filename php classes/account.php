@@ -116,4 +116,11 @@ class Account
     {
         return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
     }
+
+    public function import($import_data)
+    {
+        $this->id = $import_data["id"];
+        $this->username = $import_data["username"];
+        $this->password_hash = $import_data["password_hash"];
+    }
 }
