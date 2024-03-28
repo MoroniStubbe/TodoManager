@@ -111,4 +111,9 @@ class Account
 
         return false;
     }
+
+    public function export()
+    {
+        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
+    }
 }
