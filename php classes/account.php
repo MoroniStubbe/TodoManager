@@ -75,4 +75,8 @@ class Account
 
         return false;
     }
+
+    public function log_out(){
+        $this->logged_in = false;
+    }
 }
