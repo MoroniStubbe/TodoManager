@@ -3,23 +3,23 @@ include_once("database.php");
 include_once("../php classes/account.php");
 
 $account = new Account($database);
-$account->username = "asd";
-$account->password = "asdasdasdasd";
+$account->set_username("asd");
+$account->set_password("asdasdasdasd");
 
 //Test create()
 $account->create();
 
 //Test read()
-// $account->read();
+$account->read(username: "asd");
 
 //Test update()
-$account->username = "asdasd";
-$account->update(["username"]);
+$account->set_username("qwe");
+$account->set_password("qweqweqweqwe");
+$account->update();
 
 //Test log_in() and log_out()
-// $account->password = "asd"; //wrong password
-// $account->password = "asdasdasdasd"; //correct password
-// $account->log_in();
-// $account->log_out();
+$account->log_in("asd"); //wrong password
+$account->log_in("qweqweqweqwe"); //correct password
+$account->log_out();
 
 $a = 1; //to break here to read the var above
