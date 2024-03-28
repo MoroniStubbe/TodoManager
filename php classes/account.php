@@ -99,8 +99,9 @@ class Account
         return false;
     }
 
-    public function change_username($username){
-        if($this->logged_in and $this->set_username($username)){
+    public function change_username($username)
+    {
+        if ($this->logged_in and $this->set_username($username)) {
             return true;
         }
 
@@ -118,8 +119,9 @@ class Account
         return false;
     }
 
-    public function change_password($password){
-        if($this->logged_in and $this->set_password($password)){
+    public function change_password($password)
+    {
+        if ($this->logged_in and $this->set_password($password)) {
             return true;
         }
 
@@ -140,5 +142,15 @@ class Account
     public function log_out()
     {
         $this->logged_in = false;
+    }
+
+    public function delete()
+    {
+        if ($this->logged_in) {
+            $this->database->delete("accounts", ["id" => $this->id]);
+            return true;
+        }
+
+        return false;
     }
 }
