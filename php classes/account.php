@@ -80,7 +80,19 @@ class Account
         return false;
     }
 
-    public function log_out(){
+    public function log_out()
+    {
         $this->logged_in = false;
+    }
+
+    //returns true if password is valid
+    public function set_password($password)
+    {
+        if (strlen($password) > 11 and !str_contains($password, " ")) {
+            $this->password_hash = password_hash($password, PASSWORD_DEFAULT);
+            return true;
+        }
+
+        return false;
     }
 }
