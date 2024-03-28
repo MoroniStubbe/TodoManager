@@ -69,31 +69,17 @@ class Account
         $this->database->update("accounts", $column_value_pairs, ["id" => $this->id]);
     }
 
-    //returns true if login was successful
-    public function log_in($password)
+    public function export()
     {
-        if (!$this->logged_in and $this->read($this->id) and password_verify($password, $this->password_hash)) {
-            $this->logged_in = true;
-            return true;
-        }
-
-        return false;
+        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
     }
 
-    public function log_out()
+    //only use with data from export()
+    public function import($import_data)
     {
-        $this->logged_in = false;
-    }
-
-    //returns true if password is valid
-    public function set_password($password)
-    {
-        if (strlen($password) > 11 and !str_contains($password, " ")) {
-            $this->password_hash = password_hash($password, PASSWORD_DEFAULT);
-            return true;
-        }
-
-        return false;
+        $this->id = $import_data["id"];
+        $this->username = $import_data["username"];
+        $this->password_hash = $import_data["password_hash"];
     }
 
     //returns true if username was set
@@ -113,16 +99,30 @@ class Account
         return false;
     }
 
-    public function export()
+    //returns true if password is valid
+    public function set_password($password)
     {
-        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
+        if (strlen($password) > 11 and !str_contains($password, " ")) {
+            $this->password_hash = password_hash($password, PASSWORD_DEFAULT);
+            return true;
+        }
+
+        return false;
     }
 
-    //only use with data from export()
-    public function import($import_data)
+    //returns true if login was successful
+    public function log_in($password)
     {
-        $this->id = $import_data["id"];
-        $this->username = $import_data["username"];
-        $this->password_hash = $import_data["password_hash"];
+        if (!$this->logged_in and $this->read($this->id) and password_verify($password, $this->password_hash)) {
+            $this->logged_in = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    public function log_out()
+    {
+        $this->logged_in = false;
     }
 }
