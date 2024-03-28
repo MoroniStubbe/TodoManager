@@ -99,6 +99,14 @@ class Account
         return false;
     }
 
+    public function change_username($username){
+        if($this->logged_in and $this->set_username($username)){
+            return true;
+        }
+
+        return false;
+    }
+
     //returns true if password is valid
     public function set_password($password)
     {
