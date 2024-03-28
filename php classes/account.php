@@ -65,7 +65,9 @@ class Account
         }
     }
 
-    public function update($columns)
+    //updates all columns by default
+    //input can be contain one of: ["username", "password_hash"]
+    public function update($columns = ["username", "password_hash"])
     {
         $column_value_pairs = [];
 
