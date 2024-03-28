@@ -14,14 +14,14 @@ class Account
     }
 
     //returns true if account was found
-    public function read()
+    public function read($id = null, $username = "")
     {
         $accounts = [];
 
-        if ($this->id !== null) {
-            $accounts = $this->database->read($this->table, where: ["id" => $this->id]);
-        } else if ($this->username !== "") {
-            $accounts = $this->database->read($this->table, where: ["username" => $this->username]);
+        if ($id !== null) {
+            $accounts = $this->database->read("accounts", where: ["id" => $id]);
+        } else if ($username !== "") {
+            $accounts = $this->database->read("accounts", where: ["username" => $username]);
         }
 
         if (count($accounts) > 0) {
