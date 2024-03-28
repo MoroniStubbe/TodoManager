@@ -2,13 +2,11 @@
 include_once("database.php");
 class Account
 {
-    public $database;
-    public $table = "accounts";
-    public $id;
-    public $username = "";
-    public $password = "";
-    public $password_hash = "";
-    public $logged_in = false;
+    private $database;
+    private $id;
+    private $username = "";
+    private $password_hash = "";
+    private $logged_in = false;
 
     public function __construct($database)
     {
