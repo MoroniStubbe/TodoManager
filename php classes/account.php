@@ -65,7 +65,12 @@ class Account
         }
     }
 
-    //returns true on login success
+    public function update($column_value_pairs)
+    {
+        $this->database->update($this->table, $column_value_pairs, ["id" => $this->id]);
+    }
+
+    //returns true if login was successful
     public function log_in()
     {
         if (!$this->logged_in and $this->read() and password_verify($this->password, $this->password_hash)) {
