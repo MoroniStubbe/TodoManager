@@ -65,8 +65,18 @@ class Account
         }
     }
 
-    public function update($column_value_pairs)
+    public function update($columns)
     {
+        $column_value_pairs = [];
+
+        if(in_array("username", $columns)){
+            $column_value_pairs["username"] = $this->username;
+        }
+
+        if(in_array("password_hash", $columns)){
+            $column_value_pairs["password_hash"] = $this->password_hash;
+        }
+
         $this->database->update($this->table, $column_value_pairs, ["id" => $this->id]);
     }
 
