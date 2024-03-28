@@ -95,4 +95,20 @@ class Account
 
         return false;
     }
+
+    public function set_username($username)
+    {
+        if ($username !== "") {
+            $backup = $this->export();
+
+            if (!$this->read(username: $username)) {
+                $this->username = $username;
+                return true;
+            }
+
+            $this->import($backup);
+        }
+
+        return false;
+    }
 }
