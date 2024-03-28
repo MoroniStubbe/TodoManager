@@ -35,16 +35,6 @@ class Account
         return false;
     }
 
-    //returns true if password is valid
-    public function validate_password()
-    {
-        if (strlen($this->password) > 11 and !str_contains($this->password, " ")) {
-            return true;
-        }
-
-        return false;
-    }
-
     //returns true if account was created
     public function create()
     {
