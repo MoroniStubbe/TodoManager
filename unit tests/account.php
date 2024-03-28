@@ -10,7 +10,7 @@ $account = new Account($database);
 // $account->create();
 
 //Test read()
-$account->read(username: "asd");
+$account->read(username: "qwe");
 
 //Test update()
 // $account->set_username("qwe");
