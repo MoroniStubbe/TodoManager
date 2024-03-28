@@ -148,7 +148,6 @@ class Account
     {
         if ($this->logged_in) {
             $this->database->delete("accounts", ["id" => $this->id]);
-            $this->log_out();
             return true;
         }
 
