@@ -7,10 +7,14 @@ $account->username = "asd";
 $account->password = "asdasdasdasd";
 
 //Test create()
-// $account->create();
+$account->create();
 
 //Test read()
 // $account->read();
+
+//Test update()
+$account->username = "asdasd";
+$account->update(["username"]);
 
 //Test log_in() and log_out()
 // $account->password = "asd"; //wrong password
