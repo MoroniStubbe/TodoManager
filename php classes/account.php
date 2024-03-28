@@ -96,6 +96,7 @@ class Account
         return false;
     }
 
+    //returns true if username was set
     public function set_username($username)
     {
         if ($username !== "") {
@@ -117,6 +118,7 @@ class Account
         return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
     }
 
+    //only use with data from export()
     public function import($import_data)
     {
         $this->id = $import_data["id"];
