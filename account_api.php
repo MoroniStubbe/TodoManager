@@ -1,7 +1,7 @@
 <?php
 //for now we use $_GET instead of $_POST just to test the functions
 //TODO: replace $_GET for $_POST
-include_once("php classes/database.php");
+require_once("php classes/database.php");
 $database = new Database("localhost", "todo_manager", "root", "");
 
 switch ($_GET["action"]) {
