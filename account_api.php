@@ -20,6 +20,10 @@ switch ($_GET["action"]) {
 
     case "log_in":
         $account->log_in($_GET["password"]);
+
+    case "delete":
+        $account->delete();
+        session_destroy();
 }
 
 $_SESSION["account"] = $account->export();
