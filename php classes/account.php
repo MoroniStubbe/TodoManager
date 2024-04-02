@@ -80,6 +80,7 @@ class Account
         $this->id = $import_data["id"];
         $this->username = $import_data["username"];
         $this->password_hash = $import_data["password_hash"];
+        $this->logged_in = $import_data["logged_in"];
     }
 
     //returns true if username was set
