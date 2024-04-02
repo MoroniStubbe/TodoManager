@@ -60,7 +60,7 @@ if (isset($_GET["action"])) {
             $_SESSION["account"] = $account->export();
             break;
     }
-    
+
     //for debugging only
     //TODO: remove echo
     echo json_encode($account->export());
