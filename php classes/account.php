@@ -103,6 +103,7 @@ class Account
     public function change_username($username)
     {
         if ($this->logged_in and $this->set_username($username)) {
+            $this->update(["username"]);
             return true;
         }
 
@@ -123,6 +124,7 @@ class Account
     public function change_password($password)
     {
         if ($this->logged_in and $this->set_password($password)) {
+            $this->update(["password_hash"]);
             return true;
         }
 
