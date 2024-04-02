@@ -22,6 +22,7 @@ if(isset($_GET["action"])){
                 $account->create();
             }
 
+            $_SESSION["account"] = $account->export();
             break;
     
         case "log_in":
@@ -30,6 +31,7 @@ if(isset($_GET["action"])){
                 $account->log_in($_GET["password"]);
             }
 
+            $_SESSION["account"] = $account->export();
             break;
     
         case "delete":
@@ -38,5 +40,4 @@ if(isset($_GET["action"])){
             break;
     }
     
-    $_SESSION["account"] = $account->export();
 }
