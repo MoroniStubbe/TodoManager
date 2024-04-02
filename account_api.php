@@ -43,5 +43,14 @@ if (isset($_GET["action"])) {
             $account->delete();
             session_destroy();
             break;
+
+        case "change_username":
+            if (isset($_GET["username"])) {
+                $account->change_username($_GET["username"]);
+            }
+
+            $_SESSION["account"] = $account->export();
+            break;
+
     }
 }
