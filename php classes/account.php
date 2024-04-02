@@ -71,7 +71,7 @@ class Account
 
     public function export()
     {
-        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
+        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash, "logged_in" => $this->logged_in];
     }
 
     //only use with data from export()
