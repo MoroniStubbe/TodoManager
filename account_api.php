@@ -52,5 +52,16 @@ if (isset($_GET["action"])) {
             $_SESSION["account"] = $account->export();
             break;
 
+        case "change_password":
+            if (isset($_GET["password"])) {
+                $account->change_password($_GET["password"]);
+            }
+
+            $_SESSION["account"] = $account->export();
+            break;
     }
+    
+    //for debugging only
+    //TODO: remove echo
+    echo json_encode($account->export());
 }
