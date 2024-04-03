@@ -7,9 +7,16 @@ class Account {
         this.api = new API(api_url);
     }
 
-    create(username, password) {
+    async create(username, password) {
         var error = "";
 
         if (password.length > 11) {
-            this.api.post({ action: "create", username: username, password: password });
+            error = await this.api.post({ action: "create", username: username, password: password });
+        }
+        else{
+            error = "password too short";
+        }
+
+        return error;
+    }
 }
