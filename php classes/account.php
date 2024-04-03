@@ -35,21 +35,28 @@ class Account
         return false;
     }
 
-    //returns true if account was created
-    public function create()
+    //returns empty string if username was set
+    //else returns error string
+    public function create($username, $password)
     {
-        if ($this->username !== "" and $this->password_hash !== "" and !$this->read(username: $this->username)) {
-            $this->database->create(
-                "accounts",
-                [
-                    "username" => $this->username,
-                    "password_hash" => $this->password_hash
-                ]
-            );
-            return true;
-        } else {
-            return false;
+        $error = $this->set_username($username);
+        if ($error !== "") {
+            return $error;
         }
+
+        $error = $this->set_password($password);
+        if ($error !== "") {
+            return $error;
+        }
+
+        $this->database->create(
+            "accounts",
+            [
+                "username" => $this->username,
+                "password_hash" => $this->password_hash
+            ]
+        );
+        return "";
     }
 
     //updates all columns by default
@@ -83,7 +90,8 @@ class Account
         $this->logged_in = $import_data["logged_in"];
     }
 
-    //returns true if username was set
+    //returns empty string if username was set
+    //returns error string if setting username failed
     public function set_username($username)
     {
         if ($username !== "") {
@@ -91,13 +99,14 @@ class Account
 
             if (!$this->read(username: $username)) {
                 $this->username = $username;
-                return true;
+                return "";
             }
 
             $this->import($backup);
+            return "username already taken";
         }
 
-        return false;
+        return "no username";
     }
 
     public function change_username($username)
@@ -110,15 +119,16 @@ class Account
         return false;
     }
 
-    //returns true if password is valid
+    //returns empty string if password was set
+    //returns error string if setting username failed
     public function set_password($password)
     {
-        if (strlen($password) > 11 and !str_contains($password, " ")) {
+        if (strlen($password) > 11) {
             $this->password_hash = password_hash($password, PASSWORD_DEFAULT);
-            return true;
+            return "";
         }
 
-        return false;
+        return "password too short";
     }
 
     public function change_password($password)
