@@ -1,15 +1,13 @@
 class API {
     url;
-    method;
 
-    constructor(url, method = "GET") {
+    constructor(url) {
         this.url = url;
-        this.method = method;
     }
 
-    async send(data, method = this.method) {
+    async post(data) {
         const options = {
-            method,
+            method: "POST",
             headers: { 'Content-Type': 'application/json' }
         };
 
@@ -18,6 +16,7 @@ class API {
         }
 
         const response = await fetch(this.url, options);
-        return await response.json();
+        const response_json = await response.json();
+        return response_json;
     }
 }
