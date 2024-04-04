@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var log_in_onclick = async function (account) {
+    var log_in_onclick = async function () {
         var account = new Account(window.location.origin + "/TodoManager/account_api.php");
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
