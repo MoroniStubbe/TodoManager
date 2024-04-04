@@ -24,4 +24,9 @@ class Account {
         var error = await this.api.post({ action: "log_in", username: username, password: password });
         return error;
     }
+
+    async log_out() {
+        var error = await this.api.post({ action: "log_out" });
+        return error;
+    }
 }
