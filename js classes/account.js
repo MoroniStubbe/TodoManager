@@ -13,10 +13,15 @@ class Account {
         if (password.length > 11) {
             error = await this.api.post({ action: "create", username: username, password: password });
         }
-        else{
+        else {
             error = "password too short";
         }
 
+        return error;
+    }
+
+    async log_in(username, password) {
+        var error = await this.api.post({ action: "log_in", username: username, password: password });
         return error;
     }
 }
