@@ -146,7 +146,7 @@ class Account
     //else returns error string
     public function log_in($username, $password)
     {
-        $error = $this->set_username($username) !== "";
+        $error = $this->set_username($username);
         if ($error !== "") {
             return $error;
         }
@@ -161,10 +161,10 @@ class Account
         }
 
         if (!password_verify($password, $this->password_hash)) {
-            $this->logged_in = true;
             return "wrong password";
         }
 
+        $this->logged_in = true;
         return "";
     }
 
