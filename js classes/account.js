@@ -39,4 +39,9 @@ class Account {
         var error = await this.api.post({ action: "change_username", username: username });
         return error;
     }
+
+    async change_password(password) {
+        var error = await this.api.post({ action: "change_password", password: password });
+        return error;
+    }
 }
