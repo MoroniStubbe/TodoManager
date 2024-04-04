@@ -29,10 +29,10 @@ class Account
             $this->id = $account["id"];
             $this->username = $account["username"];
             $this->password_hash = $account["password_hash"];
-            return true;
+            return "";
         }
 
-        return false;
+        return "account not found";
     }
 
     //returns empty string if username was set
@@ -142,14 +142,29 @@ class Account
     }
 
     //returns true if login was successful
-    public function log_in($password)
+    public function log_in($username, $password)
     {
-        if (!$this->logged_in and $this->read(username: $this->username) and password_verify($password, $this->password_hash)) {
-            $this->logged_in = true;
-            return true;
+        $error = $this->set_username($username) !== "";
+        if($error !== ""){
+            return $error;
         }
 
-        return false;
+        if($this->logged_in){
+            return "already logged in";
+        }
+
+        //todo add error to read
+        $error = $this->read(username: $this->username);
+        if($error !== ""){
+            return $error;
+        }
+
+        if (!password_verify($password, $this->password_hash)) {
+            $this->logged_in = true;
+            return "wrong password";
+        }
+
+        return "";
     }
 
     public function log_out()
