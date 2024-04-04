@@ -30,8 +30,7 @@ if (isset($input->action)) {
 
         case "log_in":
             if (isset($input->username) and isset($input->password)) {
-                $account->set_username($input->username);
-                $account->log_in($input->password);
+                $error = $account->log_in($input->username, $input->password);
             }
 
             $_SESSION["account"] = $account->export();
