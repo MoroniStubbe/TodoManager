@@ -98,13 +98,14 @@ class Account
         if ($username !== "") {
             $backup = $this->export();
 
-            if (!$this->read(username: $username)) {
-                $this->username = $username;
-                return "";
+            $error = $this->read(username: $username);
+            if ($error === "") {
+                $this->import($backup);
+                return "username already taken";
             }
 
-            $this->import($backup);
-            return "username already taken";
+            $this->username = $username;
+            return "";
         }
 
         return "no username";
