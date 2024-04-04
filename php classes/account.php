@@ -147,18 +147,13 @@ class Account
     //else returns error string
     public function log_in($username, $password)
     {
-        $error = $this->set_username($username);
-        if ($error !== "") {
-            return $error;
-        }
-
         if ($this->logged_in) {
             return "already logged in";
         }
 
-        $error = $this->read(username: $this->username);
+        $error = $this->read(username: $username);
         if ($error !== "") {
-            return $error;
+            return "wrong username";
         }
 
         if (!password_verify($password, $this->password_hash)) {
