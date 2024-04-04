@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: lightblue;
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+nav a:hover {
+    background-color: blue;
+    color: black;
+}
+
+/* Stijl voor rechts uitgelijnde links */
+.right-align {
+    float: right;
+}
+
+.lijst {
+    width: 23%;
+    height: 400px;
+    background-color: gray;
+    border: solid;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0.5%;
+}
+.titellijst {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.checklist {
+    max-width: 500px; /* Maximale breedte van de lijst */
+    height: auto; /* Dynamische hoogte aanpassen aan inhoud */
+    max-height: 1000px; /* Maximale hoogte van de lijst */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Rand om de lijst */
+    border-radius: 5px;
+    overflow-y: auto; /* Scrollbalk toevoegen als de inhoud te groot is */
+}
+
+.checked {
+    background-color: #c7e6c7;
+    color: #4CAF50;
+    text-decoration: line-through;
+}
+
+.checklist-item {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+     cursor: pointer;
+}
+
+.test {
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+}
