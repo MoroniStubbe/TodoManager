@@ -4,27 +4,17 @@
     <script src="../js classes/api.js"></script>
     <script src="../js classes/account.js"></script>
     <script>
-        //Test api error handling
-        // var api = new API(window.location.origin + "/TodoManager/account_api.php");
-        // api.post({ action: "create", username: "asdasdasd", password: "asdasdasdasd" }).then(
-        //     response => {
-        //         console.log(response);
-        //     }
-        // );
+        async function test() {
+            var account = new Account(window.location.origin + "/TodoManager/account_api.php");
+            await account.create("username", "asdasdasdasd").then(error => { console.log(error); });
+            await account.log_in("username", "asdasdasdasd").then(error => { console.log(error) });
+            await account.change_username("username2").then(error => { console.log(error) });
+            await account.change_password("qweqweqweqwe").then(error => { console.log(error) });
+            // account.log_out().then(error => { console.log(error) });
+            await account.delete().then(error => { console.log(error) });
+        }
 
-        //Test account create() error handling
-        // account.create("username", "asdasdasdasd").then(
-        //     error => {
-        //         console.log(error);
-        //     }
-        // );
-
-        //Test account log_in();
-        //use create() test first
-        // var account = new Account(window.location.origin + "/TodoManager/account_api.php");
-        // account.log_in("user", "asdasdasdasd").then(error => {console.log(error)}); //wrong username
-        // account.log_in("username", "asdasd").then(error => {console.log(error)}); //wrong password
-        // account.log_in("username", "asdasdasdasd").then(error => {console.log(error)}); //correct username and password
+        test();
     </script>
 </head>
 
