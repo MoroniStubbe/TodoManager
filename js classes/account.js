@@ -29,4 +29,9 @@ class Account {
         var error = await this.api.post({ action: "log_out" });
         return error;
     }
+
+    async delete() {
+        var error = await this.api.post({ action: "delete" });
+        return error;
+    }
 }
