@@ -8,7 +8,8 @@ class API {
     async post(data) {
         const options = {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include'
         };
 
         if (data) {
