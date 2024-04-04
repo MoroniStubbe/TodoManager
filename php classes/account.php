@@ -1,5 +1,5 @@
 <?php
-include_once("database.php");
+require_once("database.php");
 class Account
 {
     private $database;
@@ -13,7 +13,8 @@ class Account
         $this->database = $database;
     }
 
-    //returns true if account was found
+    //returns empty string by default
+    //error returns: "account not found"
     public function read($id = null, $username = "")
     {
         $accounts = [];
@@ -29,27 +30,10 @@ class Account
             $this->id = $account["id"];
             $this->username = $account["username"];
             $this->password_hash = $account["password_hash"];
-            return true;
+            return "";
         }
 
-        return false;
-    }
-
-    //returns true if account was created
-    public function create()
-    {
-        if ($this->username !== "" and $this->password_hash !== "" and !$this->read(username: $this->username)) {
-            $this->database->create(
-                "accounts",
-                [
-                    "username" => $this->username,
-                    "password_hash" => $this->password_hash
-                ]
-            );
-            return true;
-        } else {
-            return false;
-        }
+        return "account not found";
     }
 
     //updates all columns by default
@@ -71,7 +55,7 @@ class Account
 
     public function export()
     {
-        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
+        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash, "logged_in" => $this->logged_in];
     }
 
     //only use with data from export()
@@ -80,78 +64,142 @@ class Account
         $this->id = $import_data["id"];
         $this->username = $import_data["username"];
         $this->password_hash = $import_data["password_hash"];
+        $this->logged_in = $import_data["logged_in"];
     }
 
-    //returns true if username was set
+    //returns empty string by default
+    //error returns: "no username", "username already taken"
     public function set_username($username)
     {
         if ($username !== "") {
             $backup = $this->export();
 
-            if (!$this->read(username: $username)) {
-                $this->username = $username;
-                return true;
+            $error = $this->read(username: $username);
+            if ($error === "") {
+                $this->import($backup);
+                return "username already taken";
             }
 
-            $this->import($backup);
+            $this->username = $username;
+            return "";
         }
 
-        return false;
+        return "no username";
     }
 
+    //returns empty string by default
+    //error returns: "not logged in", "no username", "username already taken"
     public function change_username($username)
     {
-        if ($this->logged_in and $this->set_username($username)) {
-            return true;
+        if (!$this->logged_in) {
+            return "not logged in";
         }
 
-        return false;
+        $error = $this->set_username($username);
+        if ($error !== "") {
+            return $error;
+        }
+
+        $this->update(["username"]);
+        return "";
     }
 
-    //returns true if password is valid
+    //returns empty string by default
+    //error returns: "password too short"
     public function set_password($password)
     {
-        if (strlen($password) > 11 and !str_contains($password, " ")) {
+        if (strlen($password) > 11) {
             $this->password_hash = password_hash($password, PASSWORD_DEFAULT);
-            return true;
+            return "";
         }
 
-        return false;
+        return "password too short";
     }
 
+    //returns empty string by default
+    //error returns: "not logged in", "password too short"
     public function change_password($password)
     {
-        if ($this->logged_in and $this->set_password($password)) {
-            return true;
+        if (!$this->logged_in) {
+            return "not logged in";
         }
 
-        return false;
-    }
-
-    //returns true if login was successful
-    public function log_in($password)
-    {
-        if (!$this->logged_in and $this->read($this->id) and password_verify($password, $this->password_hash)) {
-            $this->logged_in = true;
-            return true;
+        $error = $this->set_password($password);
+        if ($error !== "") {
+            return $error;
         }
 
-        return false;
+        $this->update(["password_hash"]);
+        return true;
     }
 
-    public function log_out()
+    //returns empty string by default
+    //error returns: "no username", "username already taken", "password too short"
+    public function create($username, $password)
     {
-        $this->logged_in = false;
+        $error = $this->set_username($username);
+        if ($error !== "") {
+            return $error;
+        }
+
+        $error = $this->set_password($password);
+        if ($error !== "") {
+            return $error;
+        }
+
+        $this->database->create(
+            "accounts",
+            [
+                "username" => $this->username,
+                "password_hash" => $this->password_hash
+            ]
+        );
+        return "";
     }
 
-    public function delete()
+    //returns empty string by default
+    //error returns: "already logged in", "wrong username", "wrong password"
+    public function log_in($username, $password)
     {
         if ($this->logged_in) {
-            $this->database->delete("accounts", ["id" => $this->id]);
-            $this->log_out();
-            return true;
+            return "already logged in";
         }
 
-        return false;
+        $error = $this->read(username: $username);
+        if ($error !== "") {
+            return "wrong username";
+        }
+
+        if (!password_verify($password, $this->password_hash)) {
+            return "wrong password";
+        }
+
+        $this->logged_in = true;
+        return "";
+    }
+
+    //returns empty string by default
+    //error returns: "not logged in"
+    public function log_out()
+    {
+        if ($this->logged_in) {
+            $this->logged_in = false;
+            return "";
+        }
+
+        return "not logged in";
+    }
+
+    //returns empty string by default
+    //error returns: "not logged in"
+    public function delete()
+    {
+        $error = $this->log_out();
+        if ($error !== "") {
+            return $error;
+        }
+
+        $this->database->delete("accounts", ["id" => $this->id]);
+        return "";
     }
 }
