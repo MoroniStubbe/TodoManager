@@ -34,4 +34,9 @@ class Account {
         var error = await this.api.post({ action: "delete" });
         return error;
     }
+
+    async change_username(username) {
+        var error = await this.api.post({ action: "change_username", username: username });
+        return error;
+    }
 }
