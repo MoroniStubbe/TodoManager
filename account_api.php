@@ -37,12 +37,12 @@ if (isset($input->action)) {
             break;
 
         case "log_out":
-            $account->log_out();
+            $error = $account->log_out();
             session_destroy();
             break;
 
         case "delete":
-            $account->delete();
+            $error = $account->delete();
             session_destroy();
             break;
 
