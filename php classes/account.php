@@ -13,7 +13,8 @@ class Account
         $this->database = $database;
     }
 
-    //returns true if account was found
+    //returns empty string if account was read
+    //else returns error string
     public function read($id = null, $username = "")
     {
         $accounts = [];
@@ -35,7 +36,7 @@ class Account
         return "account not found";
     }
 
-    //returns empty string if username was set
+    //returns empty string if account was created
     //else returns error string
     public function create($username, $password)
     {
@@ -141,21 +142,21 @@ class Account
         return false;
     }
 
-    //returns true if login was successful
+    //returns empty string if login was successful
+    //else returns error string
     public function log_in($username, $password)
     {
         $error = $this->set_username($username) !== "";
-        if($error !== ""){
+        if ($error !== "") {
             return $error;
         }
 
-        if($this->logged_in){
+        if ($this->logged_in) {
             return "already logged in";
         }
 
-        //todo add error to read
         $error = $this->read(username: $this->username);
-        if($error !== ""){
+        if ($error !== "") {
             return $error;
         }
 
