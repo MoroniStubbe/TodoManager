@@ -31,3 +31,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     document.getElementById("change_password").onclick = change_password_onclick;
+
+
+    var delete_account_onclick = async function () {
+        var account = new Account(window.location.origin + "/TodoManager/account_api.php");
+        var error_div = document.getElementById("error");
+        error_div.innerHTML = "";
+
+        var error = await account.delete();
+        if (error !== "") {
+            error_div.innerHTML = error;
+        }
+    }
+    document.getElementById("delete_account").onclick = delete_account_onclick;
+});
