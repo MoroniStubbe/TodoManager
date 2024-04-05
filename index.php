@@ -28,6 +28,7 @@
         <h1 id="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
         <ul id="todos">
             <li class="todo" onclick="toggleCheck(this)">$todos[0]->text</li>
+            <li class="todo" onclick="toggleCheck(this)">$todos[1]->text</li>
         </ul>
     </div>
     <div id="todo-lists">
