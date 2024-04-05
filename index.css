@@ -26,7 +26,7 @@ nav a:hover {
     float: right;
 }
 
-.todo-list {
+#todo-list {
     width: 23%;
     height: 400px;
     background-color: lightblue;
@@ -36,14 +36,14 @@ nav a:hover {
     margin: 0.5%;
 }
 
-.todo-list-title {
+#todo-list-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.todo-list-checklist {
+#todo-list-checklist {
     max-width: 500px;
     height: auto;
     max-height: 1000px;

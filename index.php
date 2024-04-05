@@ -24,9 +24,9 @@
             TodoManager is een handige tool waarmee je je eigen todo lijsten kunt maken en delen met anderen.
         </p>
     </div>
-    <div class="todo-list">
-        <h1 class="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
-        <ul class="todo-list-checklist">
+    <div id="todo-list">
+        <h1 id="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
+        <ul id="todo-list-checklist">
             <li class="todo-list-checklist-item" onclick="toggleCheck(this)">$todos[0]->text</li>
         </ul>
     </div>
