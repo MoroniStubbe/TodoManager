@@ -19,10 +19,15 @@
         </div>
     </nav>
     <div class="todo-list">
-        <h1 class="todo-list-title">Mijn Todo lijst</h1>
+        <h1 class="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
         <ul class="todo-list-checklist">
-            <li class="todo-list-checklist-item" onclick="toggleCheck(this)">Enkele todo</li>
+            <li class="todo-list-checklist-item" onclick="toggleCheck(this)">$todos[0]->text</li>
         </ul>
+    </div>
+    <div id="my-todo-lists">
+        <h1>Mijn todo lijsten</h1>
+        <div id="todo-list-1"><a href="">$todo_lists[0]->title</a></div>
+        <div id="todo-list-1"><a href="">$todo_lists[1]->title</a></div>
     </div>
 </body>
 
