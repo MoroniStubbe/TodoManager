@@ -130,7 +130,7 @@ class Account
         }
 
         $this->update(["password_hash"]);
-        return true;
+        return "";
     }
 
     //returns empty string by default
