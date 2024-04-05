@@ -18,6 +18,12 @@
             <a href="">Nieuwe Lijst</a>
         </div>
     </nav>
+    <div id="about">
+        <h1>Over TodoManager</h1>
+        <p>
+            TodoManager is een handige tool waarmee je je eigen todo lijsten kunt maken en delen met anderen.
+        </p>
+    </div>
     <div class="todo-list">
         <h1 class="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
         <ul class="todo-list-checklist">
