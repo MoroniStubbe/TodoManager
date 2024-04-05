@@ -16,56 +16,58 @@ nav a {
     padding: 14px 16px;
     text-decoration: none;
 }
+
 nav a:hover {
     background-color: blue;
     color: black;
 }
 
-/* Stijl voor rechts uitgelijnde links */
 .right-align {
     float: right;
 }
 
-.lijst {
+.todo-list {
     width: 23%;
     height: 400px;
-    background-color: gray;
+    background-color: lightblue;
     border: solid;
     border-radius: 10px;
     display: inline-block;
     margin: 0.5%;
 }
-.titellijst {
+
+.todo-list-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.checklist {
-    max-width: 500px; /* Maximale breedte van de lijst */
-    height: auto; /* Dynamische hoogte aanpassen aan inhoud */
-    max-height: 1000px; /* Maximale hoogte van de lijst */
+.todo-list-checklist {
+    max-width: 500px;
+    height: auto;
+    max-height: 1000px;
     margin: 10px;
     padding: 10px;
-    border: 1px solid #ccc; /* Rand om de lijst */
+    border: 1px solid whitesmoke;
     border-radius: 5px;
-    overflow-y: auto; /* Scrollbalk toevoegen als de inhoud te groot is */
+    overflow-y: auto;
 }
 
-.checked {
-    background-color: #c7e6c7;
-    color: #4CAF50;
-    text-decoration: line-through;
-}
-
-.checklist-item {
+.todo-list-checklist-item {
+    background-color: whitesmoke;
     list-style-type: none;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid whitesmoke;
     border-radius: 5px;
-     cursor: pointer;
+    cursor: pointer;
+}
+
+.checked {
+    background-color: palegreen;
+    color: limegreen;
+    text-decoration: line-through;
 }
 
 .test {
