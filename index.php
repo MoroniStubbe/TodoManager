@@ -26,8 +26,10 @@
     </div>
     <div id="my-todo-lists">
         <h1>Mijn todo lijsten</h1>
-        <div id="todo-list-1"><a href="">$todo_lists[0]->title</a></div>
-        <div id="todo-list-1"><a href="">$todo_lists[1]->title</a></div>
+        <ul>
+            <li id="todo-list-1"><a href="">$todo_lists[0]->title</a></li>
+            <li id="todo-list-2"><a href="">$todo_lists[1]->title</a></li>
+        </ul>
     </div>
 </body>
 
