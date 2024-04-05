@@ -43,7 +43,7 @@ nav a:hover {
     align-items: center;
 }
 
-#todo-list-checklist {
+#todos {
     max-width: 500px;
     height: auto;
     max-height: 1000px;
@@ -54,7 +54,7 @@ nav a:hover {
     overflow-y: auto;
 }
 
-.todo-list-checklist-item {
+.todo {
     background-color: whitesmoke;
     list-style-type: none;
     margin: 10px 0;

@@ -26,11 +26,11 @@
     </div>
     <div id="todo-list">
         <h1 id="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
-        <ul id="todo-list-checklist">
-            <li class="todo-list-checklist-item" onclick="toggleCheck(this)">$todos[0]->text</li>
+        <ul id="todos">
+            <li class="todo" onclick="toggleCheck(this)">$todos[0]->text</li>
         </ul>
     </div>
-    <div id="my-todo-lists">
+    <div id="todo-lists">
         <h1>Mijn todo lijsten</h1>
         <ul>
             <li id="todo-list-1"><a href="">$todo_lists[0]->title</a></li>
