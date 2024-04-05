@@ -11,3 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     document.getElementById("change_username").onclick = change_username_onclick;
+
+
+    var change_password_onclick = async function () {
+        var account = new Account(window.location.origin + "/TodoManager/account_api.php");
+        var password = document.getElementById("password").value;
+        var password_confirm = document.getElementById("password_confirm").value;
+        var error_div = document.getElementById("error");
+        error_div.innerHTML = "";
+
+        if (password !== password_confirm) {
+            error_div.innerHTML = "passwords don't match";
+            return false;
+        }
+
+        var error = await account.change_password(password);
+        if (error !== "") {
+            error_div.innerHTML = error;
+        }
+    }
+    document.getElementById("change_password").onclick = change_password_onclick;
