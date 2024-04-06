@@ -11,8 +11,10 @@
 
 <body>
     <nav>
-        <a href="">To Do</a>
-        <div class="right-align">
+        <div id="nav-left">
+            <a href="">To Do</a>
+        </div>
+        <div id="nav-right">
             <a href="">Mijn To Do</a>
             <a href="">Login</a>
             <a href="">Nieuwe Lijst</a>

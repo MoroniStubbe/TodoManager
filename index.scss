@@ -1,0 +1,41 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    nav {
+        width: 100%;
+        height: 10%;
+        background-color: lightblue;
+
+        div {
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+
+            a {
+                display: inline-block;
+                width: 20%;
+                height: 100%;
+                padding-top: 4vh;
+                box-sizing: border-box;
+                text-align: center;
+                color: white;
+            }
+
+            a:hover {
+                background-color: lightskyblue;
+                color: black;
+            }
+        }
+
+        #nav-right {
+            float: right;
+
+            a {
+                float: inherit;
+            }
+        }
+    }
+}
