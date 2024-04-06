@@ -40,46 +40,49 @@ body {
         }
     }
 
-    #todo-list {
-        display: inline-block;
-        width: 25%;
-        margin: 5vh 5%;
-        padding: 3vh 1%;
-        border: solid 0.3vw;
-        border-radius: 1vw;
-        background-color: lightblue;
+    main {
+        div {
+            float: left;
+            width: 25%;
+            margin: 5vh 2%;
+            padding: 3vh 1%;
+            border: solid 0.3vw;
+            border-radius: 1vw;
+            background-color: lightblue;
 
-        #todo-list-title {
-            width: 100%;
-            margin-top: 0;
-            margin-bottom: 5vh;
-            text-align: center;
-        }
-
-        #todos {
-            width: 90%;
-            //no height because it's a container of unknown length
-            margin: auto;
-            padding: 0;
-            border: 0.1vw solid whitesmoke;
-            border-radius: 0.5vw;
-            box-sizing: border-box;
-
-            .todo {
-                width: 90%;
-                list-style-type: none;
-                margin: 1vh auto;
-                padding: 1vh;
-                border: 1px solid whitesmoke;
-                border-radius: 0.4vw;
-                background-color: whitesmoke;
-                cursor: pointer;
+            h1 {
+                width: 100%;
+                margin-top: 0;
+                margin-bottom: 5vh;
+                text-align: center;
             }
 
-            .checked {
-                background-color: palegreen;
-                color: limegreen;
-                text-decoration: line-through;
+            ul,
+            p {
+                width: 90%;
+                //no height because it's a container of unknown length
+                margin: auto;
+                padding: 1vh 2%;
+                border: 0.1vw solid whitesmoke;
+                border-radius: 0.5vw;
+                box-sizing: border-box;
+
+                li {
+                    width: 90%;
+                    list-style-type: none;
+                    margin: 1vh auto;
+                    padding: 1vh;
+                    border: 1px solid whitesmoke;
+                    border-radius: 0.4vw;
+                    background-color: whitesmoke;
+                    cursor: pointer;
+                }
+
+                .checked {
+                    background-color: palegreen;
+                    color: limegreen;
+                    text-decoration: line-through;
+                }
             }
         }
     }

@@ -34,30 +34,32 @@ body nav #nav-right {
 body nav #nav-right a {
   float: inherit;
 }
-body #todo-list {
-  display: inline-block;
+body main div {
+  float: left;
   width: 25%;
-  margin: 5vh 5%;
+  margin: 5vh 2%;
   padding: 3vh 1%;
   border: solid 0.3vw;
   border-radius: 1vw;
   background-color: lightblue;
 }
-body #todo-list #todo-list-title {
+body main div h1 {
   width: 100%;
   margin-top: 0;
   margin-bottom: 5vh;
   text-align: center;
 }
-body #todo-list #todos {
+body main div ul,
+body main div p {
   width: 90%;
   margin: auto;
-  padding: 0;
+  padding: 1vh 2%;
   border: 0.1vw solid whitesmoke;
   border-radius: 0.5vw;
   box-sizing: border-box;
 }
-body #todo-list #todos .todo {
+body main div ul li,
+body main div p li {
   width: 90%;
   list-style-type: none;
   margin: 1vh auto;
@@ -67,7 +69,8 @@ body #todo-list #todos .todo {
   background-color: whitesmoke;
   cursor: pointer;
 }
-body #todo-list #todos .checked {
+body main div ul .checked,
+body main div p .checked {
   background-color: palegreen;
   color: limegreen;
   text-decoration: line-through;
