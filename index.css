@@ -32,4 +32,42 @@ body nav #nav-right {
 }
 body nav #nav-right a {
   float: inherit;
+}
+body #todo-list {
+  display: inline-block;
+  width: 25%;
+  margin: 5vh 5%;
+  padding: 3vh 1%;
+  border: solid 0.3vw;
+  border-radius: 1vw;
+  background-color: lightblue;
+}
+body #todo-list #todo-list-title {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 5vh;
+  text-align: center;
+}
+body #todo-list #todos {
+  width: 90%;
+  margin: auto;
+  padding: 0;
+  border: 0.1vw solid whitesmoke;
+  border-radius: 0.5vw;
+  box-sizing: border-box;
+}
+body #todo-list #todos .todo {
+  width: 90%;
+  list-style-type: none;
+  margin: 1vh auto;
+  padding: 1vh;
+  border: 1px solid whitesmoke;
+  border-radius: 0.4vw;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+body #todo-list #todos .checked {
+  background-color: palegreen;
+  color: limegreen;
+  text-decoration: line-through;
 }/*# sourceMappingURL=index.css.map */
