@@ -69,12 +69,13 @@ body {
 
                 li {
                     width: 90%;
-                    list-style-type: none;
+                    box-sizing: border-box;
                     margin: 1vh auto;
-                    padding: 1vh;
+                    padding: 1vh 10%;
                     border: 1px solid whitesmoke;
                     border-radius: 0.4vw;
                     background-color: whitesmoke;
+                    list-style-type: none;
                     cursor: pointer;
                 }
 
