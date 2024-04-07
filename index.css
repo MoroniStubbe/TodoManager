@@ -11,14 +11,12 @@ body nav {
   background-color: lightblue;
 }
 body nav div {
-  display: inline-block;
   width: 50%;
   height: 100%;
 }
 body nav div a {
-  display: inline-block;
   height: 100%;
-  padding: 3vh 2%;
+  padding: 0 2%;
   box-sizing: border-box;
   text-align: center;
   font-size: 3vh;
@@ -103,7 +101,7 @@ body main #todo-lists ul li,
 body main #todo-lists p li {
   width: 90%;
   box-sizing: border-box;
-  margin: 1vh auto;
+  margin: 1vh 0;
   border: 1px solid whitesmoke;
   border-radius: 0.4vw;
   background-color: whitesmoke;
@@ -122,8 +120,7 @@ body main #todo-lists ul li div,
 body main #todo-lists ul li a,
 body main #todo-lists p li div,
 body main #todo-lists p li a {
-  display: block;
-  padding: 1vh 3%;
+  padding: 0 3%;
 }
 body main #about ul .checked,
 body main #about p .checked,
