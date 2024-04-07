@@ -17,9 +17,8 @@ body nav div {
 }
 body nav div a {
   display: inline-block;
-  width: 20%;
   height: 100%;
-  padding-top: 3vh;
+  padding: 3vh 2%;
   box-sizing: border-box;
   text-align: center;
   font-size: 3vh;
@@ -27,7 +26,7 @@ body nav div a {
 }
 @media (max-aspect-ratio: 1.778) {
   body nav div a {
-    font-size: 2vw;
+    font-size: 1.7vw;
   }
 }
 body nav div a:hover {
@@ -45,7 +44,9 @@ body main {
   justify-content: space-evenly;
   width: 100%;
 }
-body main div {
+body main #about,
+body main #todo-list,
+body main #todo-lists {
   float: left;
   width: 25%;
   margin: 5vh 0;
@@ -54,7 +55,9 @@ body main div {
   border-radius: 1vw;
   background-color: lightblue;
 }
-body main div h1 {
+body main #about h1,
+body main #todo-list h1,
+body main #todo-lists h1 {
   width: 100%;
   margin-top: 0;
   margin-bottom: 5vh;
@@ -62,12 +65,18 @@ body main div h1 {
   font-size: 5vh;
 }
 @media (max-aspect-ratio: 1.778) {
-  body main div h1 {
-    font-size: 3vw;
+  body main #about h1,
+  body main #todo-list h1,
+  body main #todo-lists h1 {
+    font-size: 2.8vw;
   }
 }
-body main div ul,
-body main div p {
+body main #about ul,
+body main #about p,
+body main #todo-list ul,
+body main #todo-list p,
+body main #todo-lists ul,
+body main #todo-lists p {
   width: 90%;
   margin: auto;
   padding: 1vh 2%;
@@ -77,25 +86,51 @@ body main div p {
   font-size: 2vh;
 }
 @media (max-aspect-ratio: 1.778) {
-  body main div ul,
-  body main div p {
-    font-size: 1vw;
+  body main #about ul,
+  body main #about p,
+  body main #todo-list ul,
+  body main #todo-list p,
+  body main #todo-lists ul,
+  body main #todo-lists p {
+    font-size: 1.1vw;
   }
 }
-body main div ul li,
-body main div p li {
+body main #about ul li,
+body main #about p li,
+body main #todo-list ul li,
+body main #todo-list p li,
+body main #todo-lists ul li,
+body main #todo-lists p li {
   width: 90%;
   box-sizing: border-box;
   margin: 1vh auto;
-  padding: 1vh 10%;
   border: 1px solid whitesmoke;
   border-radius: 0.4vw;
   background-color: whitesmoke;
   list-style-type: none;
   cursor: pointer;
 }
-body main div ul .checked,
-body main div p .checked {
+body main #about ul li div,
+body main #about ul li a,
+body main #about p li div,
+body main #about p li a,
+body main #todo-list ul li div,
+body main #todo-list ul li a,
+body main #todo-list p li div,
+body main #todo-list p li a,
+body main #todo-lists ul li div,
+body main #todo-lists ul li a,
+body main #todo-lists p li div,
+body main #todo-lists p li a {
+  display: block;
+  padding: 1vh 3%;
+}
+body main #about ul .checked,
+body main #about p .checked,
+body main #todo-list ul .checked,
+body main #todo-list p .checked,
+body main #todo-lists ul .checked,
+body main #todo-lists p .checked {
   background-color: palegreen;
   color: limegreen;
   text-decoration: line-through;
