@@ -60,14 +60,17 @@ body main #todo-lists {
   width: 25vw;
   border: solid 0.3vw;
   border-radius: 1vw;
+  margin: 5vh 0;
   background-color: lightblue;
 }
 body main #about h1,
 body main #todo-list h1,
 body main #todo-lists h1 {
-  width: 25vw;
+  width: 23vw;
+  margin: 3vh auto;
   text-align: center;
   font-size: 5vh;
+  overflow-wrap: break-word;
 }
 @media (max-aspect-ratio: 1.778) {
   body main #about h1,
@@ -76,60 +79,87 @@ body main #todo-lists h1 {
     font-size: 2.8vw;
   }
 }
+body main #about #about-text-container,
 body main #about ul,
-body main #about p,
+body main #todo-list #about-text-container,
 body main #todo-list ul,
-body main #todo-list p,
-body main #todo-lists ul,
-body main #todo-lists p {
-  width: 20vw;
+body main #todo-lists #about-text-container,
+body main #todo-lists ul {
+  width: 23vw;
+  padding: 0;
   border: 0.1vw solid whitesmoke;
   border-radius: 0.5vw;
+  margin: 2vh auto;
   font-size: 2vh;
 }
 @media (max-aspect-ratio: 1.778) {
+  body main #about #about-text-container,
   body main #about ul,
-  body main #about p,
+  body main #todo-list #about-text-container,
   body main #todo-list ul,
-  body main #todo-list p,
-  body main #todo-lists ul,
-  body main #todo-lists p {
+  body main #todo-lists #about-text-container,
+  body main #todo-lists ul {
     font-size: 1.1vw;
   }
 }
-body main #about ul li,
-body main #about p li,
-body main #todo-list ul li,
-body main #todo-list p li,
-body main #todo-lists ul li,
-body main #todo-lists p li {
-  width: 15vw;
-  border: 1vw solid whitesmoke;
+body main #about #about-text-container #about-text,
+body main #about ul #about-text,
+body main #todo-list #about-text-container #about-text,
+body main #todo-list ul #about-text,
+body main #todo-lists #about-text-container #about-text,
+body main #todo-lists ul #about-text {
+  width: 21vw;
+  border: 0.1vw solid whitesmoke;
   border-radius: 0.4vw;
+  margin: 1vw 1vw;
+  background-color: whitesmoke;
+}
+body main #about #about-text-container #about-text p,
+body main #about ul #about-text p,
+body main #todo-list #about-text-container #about-text p,
+body main #todo-list ul #about-text p,
+body main #todo-lists #about-text-container #about-text p,
+body main #todo-lists ul #about-text p {
+  width: 19vw;
+  margin: 1vh auto;
+}
+body main #about #about-text-container li,
+body main #about ul li,
+body main #todo-list #about-text-container li,
+body main #todo-list ul li,
+body main #todo-lists #about-text-container li,
+body main #todo-lists ul li {
+  width: 21vw;
+  border: 0.1vw solid whitesmoke;
+  border-radius: 0.4vw;
+  margin: 2vh auto;
   background-color: whitesmoke;
   list-style-type: none;
   cursor: pointer;
 }
+body main #about #about-text-container li div,
+body main #about #about-text-container li a,
 body main #about ul li div,
 body main #about ul li a,
-body main #about p li div,
-body main #about p li a,
+body main #todo-list #about-text-container li div,
+body main #todo-list #about-text-container li a,
 body main #todo-list ul li div,
 body main #todo-list ul li a,
-body main #todo-list p li div,
-body main #todo-list p li a,
+body main #todo-lists #about-text-container li div,
+body main #todo-lists #about-text-container li a,
 body main #todo-lists ul li div,
-body main #todo-lists ul li a,
-body main #todo-lists p li div,
-body main #todo-lists p li a {
+body main #todo-lists ul li a {
+  display: block;
+  width: 19vw;
+  margin: 1vh auto;
   text-decoration: none;
 }
+body main #about #about-text-container .checked,
 body main #about ul .checked,
-body main #about p .checked,
+body main #todo-list #about-text-container .checked,
 body main #todo-list ul .checked,
-body main #todo-list p .checked,
-body main #todo-lists ul .checked,
-body main #todo-lists p .checked {
+body main #todo-lists #about-text-container .checked,
+body main #todo-lists ul .checked {
   background-color: palegreen;
   color: limegreen;
   text-decoration: line-through;

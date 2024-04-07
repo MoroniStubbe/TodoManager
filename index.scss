@@ -68,39 +68,61 @@ body {
             width: 25vw;
             border: solid 0.3vw;
             border-radius: 1vw;
+            margin: 5vh 0;
             background-color: lightblue;
 
             h1 {
-                width: 25vw;
+                width: 23vw;
+                margin: 3vh auto;
                 text-align: center;
                 font-size: 5vh;
+                overflow-wrap: break-word;
 
                 @media (max-aspect-ratio: 1.778) {
                     font-size: 2.8vw; //= vh / 1.778 (seems to work)
                 }
             }
 
-            ul,
-            p {
-                width: 20vw;
+            #about-text-container,
+            ul {
+                width: 23vw;
+                padding: 0;
                 border: 0.1vw solid whitesmoke;
                 border-radius: 0.5vw;
+                margin: 2vh auto;
                 font-size: 2vh;
 
                 @media (max-aspect-ratio: 1.778) {
                     font-size: 1.1vw; //= vh / 1.778 (seems to work)
                 }
 
-                li {
-                    width: 15vw;
-                    border: 1vw solid whitesmoke;
+                #about-text {
+                    width: 21vw;
+                    border: 0.1vw solid whitesmoke;
                     border-radius: 0.4vw;
+                    margin: 1vw 1vw;
+                    background-color: whitesmoke;
+
+                    p {
+                        width: 19vw;
+                        margin: 1vh auto;
+                    }
+                }
+
+                li {
+                    width: 21vw;
+                    border: 0.1vw solid whitesmoke;
+                    border-radius: 0.4vw;
+                    margin: 2vh auto;
                     background-color: whitesmoke;
                     list-style-type: none;
                     cursor: pointer;
 
                     div,
                     a {
+                        display: block;
+                        width: 19vw;
+                        margin: 1vh auto;
                         text-decoration: none;
                     }
                 }

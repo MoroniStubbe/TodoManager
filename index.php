@@ -23,9 +23,13 @@
     <main>
         <div id="about">
             <h1>Over TodoManager</h1>
-            <p>
-                TodoManager is een handige tool waarmee je je eigen todo lijsten kunt maken en delen met anderen.
-            </p>
+            <div id="about-text-container">
+                <div id="about-text">
+                    <p>
+                        TodoManager is een handige tool waarmee je je eigen todo lijsten kunt maken en delen met anderen.
+                    </p>
+                </div>
+            </div>
         </div>
         <div id="todo-list">
             <h1 id="todo-list-title">$todo_lists[$currentTodo->id]->title</h1>
