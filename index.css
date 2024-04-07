@@ -40,10 +40,15 @@ body nav #nav-right {
 body nav #nav-right a {
   float: inherit;
 }
+body main {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
 body main div {
   float: left;
   width: 25%;
-  margin: 5vh 2%;
+  margin: 5vh 0;
   padding: 3vh 1%;
   border: solid 0.3vw;
   border-radius: 1vw;
