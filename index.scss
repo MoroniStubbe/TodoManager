@@ -17,9 +17,8 @@ body {
 
             a {
                 display: inline-block;
-                width: 20%;
                 height: 100%;
-                padding-top: 3vh;
+                padding: 3vh 2%;
                 box-sizing: border-box;
                 text-align: center;
                 font-size: 3vh;
@@ -51,7 +50,9 @@ body {
         justify-content: space-evenly;
         width: 100%;
 
-        div {
+        #about,
+        #todo-list,
+        #todo-lists {
             float: left;
             width: 25%;
             margin: 5vh 0;
@@ -75,7 +76,6 @@ body {
             ul,
             p {
                 width: 90%;
-                //no height because it's a container of unknown length
                 margin: auto;
                 padding: 1vh 2%;
                 border: 0.1vw solid whitesmoke;
@@ -91,12 +91,17 @@ body {
                     width: 90%;
                     box-sizing: border-box;
                     margin: 1vh auto;
-                    padding: 1vh 10%;
                     border: 1px solid whitesmoke;
                     border-radius: 0.4vw;
                     background-color: whitesmoke;
                     list-style-type: none;
                     cursor: pointer;
+
+                    div,
+                    a {
+                        display: block;
+                        padding: 1vh 3%;
+                    }
                 }
 
                 .checked {
