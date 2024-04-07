@@ -22,7 +22,13 @@ body nav div a {
   padding-top: 4vh;
   box-sizing: border-box;
   text-align: center;
+  font-size: 3vh;
   color: white;
+}
+@media (max-aspect-ratio: 1.778) {
+  body nav div a {
+    font-size: 2vw;
+  }
 }
 body nav div a:hover {
   background-color: lightskyblue;
@@ -48,6 +54,12 @@ body main div h1 {
   margin-top: 0;
   margin-bottom: 5vh;
   text-align: center;
+  font-size: 5vh;
+}
+@media (max-aspect-ratio: 1.778) {
+  body main div h1 {
+    font-size: 3vw;
+  }
 }
 body main div ul,
 body main div p {
@@ -57,6 +69,13 @@ body main div p {
   border: 0.1vw solid whitesmoke;
   border-radius: 0.5vw;
   box-sizing: border-box;
+  font-size: 2vh;
+}
+@media (max-aspect-ratio: 1.778) {
+  body main div ul,
+  body main div p {
+    font-size: 1vw;
+  }
 }
 body main div ul li,
 body main div p li {

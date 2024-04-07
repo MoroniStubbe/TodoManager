@@ -22,6 +22,12 @@ body {
                 padding-top: 4vh;
                 box-sizing: border-box;
                 text-align: center;
+                font-size: 3vh;
+
+                @media (max-aspect-ratio: 1.778) {
+                    font-size: 2vw;
+                }
+
                 color: white;
             }
 
@@ -55,6 +61,11 @@ body {
                 margin-top: 0;
                 margin-bottom: 5vh;
                 text-align: center;
+                font-size: 5vh;
+
+                @media (max-aspect-ratio: 1.778) {
+                    font-size: 3vw;
+                }
             }
 
             ul,
@@ -66,6 +77,11 @@ body {
                 border: 0.1vw solid whitesmoke;
                 border-radius: 0.5vw;
                 box-sizing: border-box;
+                font-size: 2vh;
+
+                @media (max-aspect-ratio: 1.778) {
+                    font-size: 1vw;
+                }
 
                 li {
                     width: 90%;
