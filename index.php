@@ -12,12 +12,12 @@
 <body>
     <nav>
         <div id="nav-left">
-            <a href="">To Do</a>
+            <a href=""><div>To Do</div></a>
         </div>
         <div id="nav-right">
-            <a href="">Mijn To Do</a>
-            <a href="">Login</a>
-            <a href="">Nieuwe Lijst</a>
+            <a href=""><div>Mijn To Do</div></a>
+            <a href=""><div>Login</div></a>
+            <a href=""><div>Nieuwe Lijst</div></a>
         </div>
     </nav>
     <main>
