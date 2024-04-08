@@ -1,0 +1,166 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+body nav {
+  width: 100vw;
+  height: 10vh;
+  margin: 0;
+  background-color: lightblue;
+}
+body nav div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+body nav div a {
+  height: 10vh;
+  text-align: center;
+  font-size: 3vh;
+  color: white;
+  text-decoration: none;
+}
+@media (max-aspect-ratio: 1.778) {
+  body nav div a {
+    font-size: 1.7vw;
+  }
+}
+body nav div a div {
+  margin: 0 1vw;
+}
+body nav div a:hover {
+  background-color: lightskyblue;
+  color: black;
+}
+body nav #nav-left {
+  float: left;
+}
+body nav #nav-left a {
+  float: inherit;
+}
+body nav #nav-right {
+  float: right;
+}
+body nav #nav-right a {
+  float: inherit;
+}
+body main {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+body main #about,
+body main #todo-list,
+body main #todo-lists {
+  float: left;
+  width: 25vw;
+  border: solid 0.3vw;
+  border-radius: 1vw;
+  margin: 5vh 0;
+  background-color: lightblue;
+}
+body main #about h1,
+body main #todo-list h1,
+body main #todo-lists h1 {
+  width: 23vw;
+  margin: 3vh auto;
+  text-align: center;
+  font-size: 5vh;
+  overflow-wrap: break-word;
+}
+@media (max-aspect-ratio: 1.778) {
+  body main #about h1,
+  body main #todo-list h1,
+  body main #todo-lists h1 {
+    font-size: 2.8vw;
+  }
+}
+body main #about #about-text-container,
+body main #about ul,
+body main #todo-list #about-text-container,
+body main #todo-list ul,
+body main #todo-lists #about-text-container,
+body main #todo-lists ul {
+  width: 23vw;
+  padding: 0;
+  border: 0.1vw solid whitesmoke;
+  border-radius: 0.5vw;
+  margin: 2vh auto;
+  font-size: 2vh;
+}
+@media (max-aspect-ratio: 1.778) {
+  body main #about #about-text-container,
+  body main #about ul,
+  body main #todo-list #about-text-container,
+  body main #todo-list ul,
+  body main #todo-lists #about-text-container,
+  body main #todo-lists ul {
+    font-size: 1.1vw;
+  }
+}
+body main #about #about-text-container #about-text,
+body main #about ul #about-text,
+body main #todo-list #about-text-container #about-text,
+body main #todo-list ul #about-text,
+body main #todo-lists #about-text-container #about-text,
+body main #todo-lists ul #about-text {
+  width: 21vw;
+  border: 0.1vw solid whitesmoke;
+  border-radius: 0.4vw;
+  margin: 1vw 1vw;
+  background-color: whitesmoke;
+}
+body main #about #about-text-container #about-text p,
+body main #about ul #about-text p,
+body main #todo-list #about-text-container #about-text p,
+body main #todo-list ul #about-text p,
+body main #todo-lists #about-text-container #about-text p,
+body main #todo-lists ul #about-text p {
+  width: 19vw;
+  margin: 1vh auto;
+}
+body main #about #about-text-container li,
+body main #about ul li,
+body main #todo-list #about-text-container li,
+body main #todo-list ul li,
+body main #todo-lists #about-text-container li,
+body main #todo-lists ul li {
+  width: 21vw;
+  border: 0.1vw solid whitesmoke;
+  border-radius: 0.4vw;
+  margin: 2vh auto;
+  background-color: whitesmoke;
+  list-style-type: none;
+  cursor: pointer;
+}
+body main #about #about-text-container li div,
+body main #about #about-text-container li a,
+body main #about ul li div,
+body main #about ul li a,
+body main #todo-list #about-text-container li div,
+body main #todo-list #about-text-container li a,
+body main #todo-list ul li div,
+body main #todo-list ul li a,
+body main #todo-lists #about-text-container li div,
+body main #todo-lists #about-text-container li a,
+body main #todo-lists ul li div,
+body main #todo-lists ul li a {
+  display: block;
+  width: 19vw;
+  margin: 1vh auto;
+  text-decoration: none;
+}
+body main #about #about-text-container .checked,
+body main #about ul .checked,
+body main #todo-list #about-text-container .checked,
+body main #todo-list ul .checked,
+body main #todo-lists #about-text-container .checked,
+body main #todo-lists ul .checked {
+  background-color: palegreen;
+  color: limegreen;
+  text-decoration: line-through;
+}/*# sourceMappingURL=index.css.map */

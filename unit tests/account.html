@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <script src="../js classes/api.js"></script>
+    <script src="../js classes/account.js"></script>
+    <script>
+        async function test() {
+            var account = new Account(window.location.origin + "/TodoManager/account_api.php");
+            await account.create("username", "asdasdasdasd").then(error => { console.log(error); });
+            await account.log_in("username", "asdasdasdasd").then(error => { console.log(error) });
+            await account.change_username("username2").then(error => { console.log(error) });
+            await account.change_password("qweqweqweqwe").then(error => { console.log(error) });
+            // account.log_out().then(error => { console.log(error) });
+            await account.delete().then(error => { console.log(error) });
+        }
+
+        test();
+    </script>
+</head>
+
+</html>

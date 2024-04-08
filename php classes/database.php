@@ -74,13 +74,13 @@ class Database
     //returns true on success
     public function update($table, $column_value_pairs, $where = [])
     {
-        if(count($column_value_pairs) > 0){
+        if (count($column_value_pairs) > 0) {
             $sets = [];
-    
+
             foreach ($column_value_pairs as $column => $value) {
                 $sets[] = "$column = :$column";
             }
-    
+
             $set_sql = implode(", ", $sets);
             $where_sql = $this->create_where_clause($where);
             $sql = "UPDATE $table SET $set_sql" . $where_sql;
@@ -88,7 +88,7 @@ class Database
             $statement->execute(array_merge($column_value_pairs, $where));
             return true;
         }
-        
+
         return false;
     }
 
