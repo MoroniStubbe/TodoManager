@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
             error_div.innerHTML = error;
             error_div.classList.remove("hidden");
         }
+
+        window.location.href =  window.location.origin + "/TodoManager";
     }
     document.getElementById("delete_account").onclick = delete_account_onclick;
 });
