@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (error === "" || error === "already logged in") {
             window.location.href = "http://localhost/TodoManager/";
         }
-        else{
+        else {
             error_div.innerHTML = error;
         }
     }

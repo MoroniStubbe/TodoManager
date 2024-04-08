@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (error !== "") {
             error_div.innerHTML = error;
         }
-        else{
+        else {
             document.location.href = "login.php";
         }
     }

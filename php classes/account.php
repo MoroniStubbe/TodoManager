@@ -178,7 +178,8 @@ class Account
         return "";
     }
 
-    public function is_logged_in(){
+    public function is_logged_in()
+    {
         return $this->logged_in;
     }
 
