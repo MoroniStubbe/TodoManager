@@ -1,8 +1,9 @@
 <?php
 
-//for now we use $_GET instead of $_POST just to test the functions
-//TODO: replace $_GET for $_POST
-if (isset($_GET["action"])) {
+header("Content-Type: application/json");
+$input = json_decode(file_get_contents('php://input'));
+
+if (isset($input->action)) {
     require_once("php classes/database.php");
     require_once("php classes/account.php");
 
@@ -14,11 +15,11 @@ if (isset($_GET["action"])) {
         $account->import($_SESSION["account"]);
     }
 
-    switch ($_GET["action"]) {
+    switch ($input->action) {
         case "create":
-            if (isset($_GET["username"]) and isset($_GET["password"])) {
-                $account->set_username($_GET["username"]);
-                $account->set_password($_GET["password"]);
+            if (isset($input->username) and isset($input->password)) {
+                $account->set_username($input->username);
+                $account->set_password($input->password);
                 $account->create();
             }
 
@@ -26,9 +27,9 @@ if (isset($_GET["action"])) {
             break;
 
         case "log_in":
-            if (isset($_GET["username"]) and isset($_GET["password"])) {
-                $account->set_username($_GET["username"]);
-                $account->log_in($_GET["password"]);
+            if (isset($input->username) and isset($input->password)) {
+                $account->set_username($input->username);
+                $account->log_in($input->password);
             }
 
             $_SESSION["account"] = $account->export();
@@ -45,16 +46,16 @@ if (isset($_GET["action"])) {
             break;
 
         case "change_username":
-            if (isset($_GET["username"])) {
-                $account->change_username($_GET["username"]);
+            if (isset($input->username)) {
+                $account->change_username($input->username);
             }
 
             $_SESSION["account"] = $account->export();
             break;
 
         case "change_password":
-            if (isset($_GET["password"])) {
-                $account->change_password($_GET["password"]);
+            if (isset($input->password)) {
+                $account->change_password($input->password);
             }
 
             $_SESSION["account"] = $account->export();
