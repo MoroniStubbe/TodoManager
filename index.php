@@ -35,7 +35,7 @@ if (isset($_SESSION["account"])) {
                     <a href="account.php">
                         <div>Mijn Account</div>
                     </a>
-                    <a id="log_out")>
+                    <a id="log_out">
                         <div>Uitloggen</div>
                     </a>';
                 }

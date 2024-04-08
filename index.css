@@ -35,6 +35,7 @@ body nav div a div {
 body nav div a:hover {
   background-color: lightskyblue;
   color: black;
+  cursor: pointer;
 }
 body nav #nav-right {
   float: right;
