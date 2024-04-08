@@ -11,6 +11,7 @@ class Database
         try {
             $this->host = $host;
             $this->dbname = $dbname;
+            print($password);
             $this->pdo = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->pdo;
