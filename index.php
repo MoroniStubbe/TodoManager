@@ -26,12 +26,12 @@ if (isset($_SESSION["account"])) {
 <body>
     <nav>
         <div id="nav-right">
-            <a href="?create_todo_list">
-                <div>Nieuwe Lijst</div>
-            </a>
             <?php
             if ($account->is_logged_in()) {
                 echo '
+                    <a href="?create_todo_list">
+                        <div>Nieuwe Lijst</div>
+                    </a>
                     <a href="account.php">
                         <div>Mijn Account</div>
                     </a>
