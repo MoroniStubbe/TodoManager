@@ -43,13 +43,15 @@ document.addEventListener("DOMContentLoaded", function () {
         error_div.innerHTML = "";
         error_div.classList.add("hidden");
 
-        var error = await account.delete();
-        if (error !== "") {
-            error_div.innerHTML = error;
-            error_div.classList.remove("hidden");
-        }
+        if (confirm("Weet je zeker dat je je account wilt verwijderen?")) {
+            var error = await account.delete();
+            if (error !== "") {
+                error_div.innerHTML = error;
+                error_div.classList.remove("hidden");
+            }
 
-        window.location.href =  window.location.origin + "/TodoManager";
+            window.location.href = window.location.origin + "/TodoManager";
+        }
     }
     document.getElementById("delete_account").onclick = delete_account_onclick;
 });
