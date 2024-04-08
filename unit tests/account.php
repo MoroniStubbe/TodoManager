@@ -19,7 +19,7 @@ $account->read(username: "qwe");
 
 //Test log_in()
 // $account->log_in("asd"); //wrong password
-$account->log_in("qweqweqweqwe"); //correct password
+$account->log_in("qwe", "qweqweqweqwe"); //correct password
 
 //Test delete()
 $account->delete();

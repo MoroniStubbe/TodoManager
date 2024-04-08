@@ -3,23 +3,39 @@
 
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="form.css">
     <script src="/TodoManager/js classes/api.js"></script>
     <script src="/TodoManager/js classes/account.js"></script>
     <script src="/TodoManager/login.js"></script>
 </head>
 
 <body>
-    <label for="username">Gebruikersnaam:</label>
-    <input type="text" id="username"><br><br>
+    <main>
+        <h1>Login</h1>
 
-    <label for="password">Wachtwoord:</label>
-    <input type="password" id="password"><br><br>
+        <div id="container">
+            <div>
+                <label for="username">Gebruikersnaam:</label>
+                <input type="text" id="username">
+            </div>
 
-    <button id="log_in">Log in</button>
+            <div>
+                <label for="password">Wachtwoord:</label>
+                <input type="password" id="password">
+            </div>
 
-    <div id="error"></div><br><br>
+            <div>
+                <button id="log_in">Log in</button>
+            </div>
 
-    <div>Heb je nog geen account? <a href="create_account.php">Maak account</a></div>
+            <div id="error" class="hidden"></div>
+
+            <div>
+                <div>Heb je nog geen account? <a href="create_account.php">Maak account</a></div>
+            </div>
+        </div>
+        </div>
+    </main>
 </body>
 
 </html>

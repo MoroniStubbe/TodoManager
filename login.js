@@ -5,13 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
         var password = document.getElementById("password").value;
         var error_div = document.getElementById("error");
         error_div.innerHTML = "";
+        error_div.classList.add("hidden");
 
         var error = await account.log_in(username, password);
-        if (error === "" || error === "already logged in") {
+        if (error === "") {
             window.location.href = "http://localhost/TodoManager/";
         }
         else {
             error_div.innerHTML = error;
+            error_div.classList.remove("hidden");
         }
     }
     document.getElementById("log_in").onclick = log_in_onclick;
