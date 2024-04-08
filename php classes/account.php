@@ -1,5 +1,5 @@
 <?php
-include_once("database.php");
+require_once("database.php");
 class Account
 {
     private $database;
@@ -71,7 +71,7 @@ class Account
 
     public function export()
     {
-        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash];
+        return ["id" => $this->id, "username" => $this->username, "password_hash" => $this->password_hash, "logged_in" => $this->logged_in];
     }
 
     //only use with data from export()
@@ -80,6 +80,7 @@ class Account
         $this->id = $import_data["id"];
         $this->username = $import_data["username"];
         $this->password_hash = $import_data["password_hash"];
+        $this->logged_in = $import_data["logged_in"];
     }
 
     //returns true if username was set
@@ -102,6 +103,7 @@ class Account
     public function change_username($username)
     {
         if ($this->logged_in and $this->set_username($username)) {
+            $this->update(["username"]);
             return true;
         }
 
@@ -122,6 +124,7 @@ class Account
     public function change_password($password)
     {
         if ($this->logged_in and $this->set_password($password)) {
+            $this->update(["password_hash"]);
             return true;
         }
 
@@ -131,7 +134,7 @@ class Account
     //returns true if login was successful
     public function log_in($password)
     {
-        if (!$this->logged_in and $this->read($this->id) and password_verify($password, $this->password_hash)) {
+        if (!$this->logged_in and $this->read(username: $this->username) and password_verify($password, $this->password_hash)) {
             $this->logged_in = true;
             return true;
         }

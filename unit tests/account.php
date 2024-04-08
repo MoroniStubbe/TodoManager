@@ -1,6 +1,6 @@
 <?php
-include_once("database.php");
-include_once("../php classes/account.php");
+require_once("database.php");
+require_once("../php classes/account.php");
 
 $account = new Account($database);
 // $account->set_username("asd");
