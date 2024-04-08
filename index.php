@@ -29,17 +29,20 @@ if (isset($_SESSION["account"])) {
             <a href="?create_todo_list">
                 <div>Nieuwe Lijst</div>
             </a>
+            <a href="account.php">
+                <div>Mijn Account</div>
+            </a>
             <?php 
                 if ($account->is_logged_in()){
                     echo '
                     <a id="log_out")>
-                        <div>Log out</div>
+                        <div>Uitloggen</div>
                     </a>';
                 }
                 else{
                     echo '
                     <a href="login.php">
-                        <div>Log in</div>
+                        <div>Inloggen</div>
                     </a>';
                 }
             ?>
