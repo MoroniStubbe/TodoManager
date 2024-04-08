@@ -1,5 +1,7 @@
 <?php
 
+//the api echos an error if something went wrong
+
 header("Content-Type: application/json");
 $input = json_decode(file_get_contents('php://input'));
 
@@ -15,12 +17,12 @@ if (isset($input->action)) {
         $account->import($_SESSION["account"]);
     }
 
+    $error = "";
+
     switch ($input->action) {
         case "create":
             if (isset($input->username) and isset($input->password)) {
-                $account->set_username($input->username);
-                $account->set_password($input->password);
-                $account->create();
+                $error = $account->create($input->username, $input->password);
             }
 
             $_SESSION["account"] = $account->export();
@@ -28,20 +30,19 @@ if (isset($input->action)) {
 
         case "log_in":
             if (isset($input->username) and isset($input->password)) {
-                $account->set_username($input->username);
-                $account->log_in($input->password);
+                $error = $account->log_in($input->username, $input->password);
             }
 
             $_SESSION["account"] = $account->export();
             break;
 
         case "log_out":
-            $account->log_out();
+            $error = $account->log_out();
             session_destroy();
             break;
 
         case "delete":
-            $account->delete();
+            $error = $account->delete();
             session_destroy();
             break;
 
@@ -62,7 +63,5 @@ if (isset($input->action)) {
             break;
     }
 
-    //for debugging only
-    //TODO: remove echo
-    echo json_encode($account->export());
+    echo $error;
 }

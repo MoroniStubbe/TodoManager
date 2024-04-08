@@ -8,7 +8,8 @@ class API {
     async post(data) {
         const options = {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include'
         };
 
         if (data) {
@@ -16,7 +17,6 @@ class API {
         }
 
         const response = await fetch(this.url, options);
-        const response_json = await response.json();
-        return response_json;
+        return await response.text();
     }
 }
