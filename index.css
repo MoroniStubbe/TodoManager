@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: lightblue;
+    overflow: hidden;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: lightskyblue;
+    color: black;
+}
+
+.right-align {
+    float: right;
+}
+
+#todo-list {
+    width: 23%;
+    height: 400px;
+    background-color: lightblue;
+    border: solid;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0.5%;
+}
+
+#todo-list-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#todos {
+    max-width: 500px;
+    height: auto;
+    max-height: 1000px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.todo {
+    background-color: whitesmoke;
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checked {
+    background-color: palegreen;
+    color: limegreen;
+    text-decoration: line-through;
+}
+
+.test {
+    background-color: blue;
+    width: 200px;
+    height: 200px;
+}
