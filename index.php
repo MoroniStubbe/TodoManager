@@ -1,3 +1,15 @@
+<?php
+require_once("php classes/database.php");
+require_once("php classes/account.php");
+
+$database = new Database("localhost", "todo_manager", "root", "");
+$account = new Account($database);
+session_start();
+if (isset($_SESSION["account"])) {
+    $account->import($_SESSION["account"]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,18 +18,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoManager</title>
     <link rel="stylesheet" href="index.css">
+    <script src="js classes/api.js"></script>
+    <script src="js classes/account.js"></script>
     <script src="index.js"></script>
 </head>
 
 <body>
     <nav>
         <div id="nav-left">
-            <a href=""><div>To Do</div></a>
+            <a href="">
+                <div>To Do</div>
+            </a>
         </div>
         <div id="nav-right">
-            <a href=""><div>Mijn To Do</div></a>
-            <a href=""><div>Login</div></a>
-            <a href=""><div>Nieuwe Lijst</div></a>
+            <a href="">
+                <div>Mijn To Do</div>
+            </a>
+            <?php 
+                if ($account->is_logged_in()){
+                    echo '
+                    <a id="log_out")>
+                        <div>Log out</div>
+                    </a>';
+                }
+                else{
+                    echo '
+                    <a href="login.php">
+                        <div>Log in</div>
+                    </a>';
+                }
+            ?>
+            <a href="">
+                <div>Nieuwe Lijst</div>
+            </a>
         </div>
     </nav>
     <main>
