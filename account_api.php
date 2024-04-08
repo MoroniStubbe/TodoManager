@@ -48,7 +48,7 @@ if (isset($input->action)) {
 
         case "change_username":
             if (isset($input->username)) {
-                $account->change_username($input->username);
+                $error = $account->change_username($input->username);
             }
 
             $_SESSION["account"] = $account->export();
@@ -56,7 +56,7 @@ if (isset($input->action)) {
 
         case "change_password":
             if (isset($input->password)) {
-                $account->change_password($input->password);
+                $error = $account->change_password($input->password);
             }
 
             $_SESSION["account"] = $account->export();
