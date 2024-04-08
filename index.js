@@ -4,12 +4,14 @@ function toggleCheck(item) {
 
 document.addEventListener("DOMContentLoaded", 
     function () {
-        var log_out_onclick = async function () {
-            var account = new Account(window.location.origin + "/TodoManager/account_api.php");
-            await account.log_out();
-            location.reload();
+        if(document.getElementById("log_out")){
+            var log_out_onclick = async function () {
+                var account = new Account(window.location.origin + "/TodoManager/account_api.php");
+                await account.log_out();
+                location.reload();
+            }
+    
+            document.getElementById("log_out").onclick = log_out_onclick;
         }
-
-        document.getElementById("log_out").onclick = log_out_onclick;
     }
 );
