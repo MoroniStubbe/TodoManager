@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (error !== "") {
             error_div.innerHTML = error;
         }
+        else{
+            document.location.href = "login.php";
+        }
     }
     document.getElementById("create_account").onclick = create_account_onclick;
 });
