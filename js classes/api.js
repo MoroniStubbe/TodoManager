@@ -17,6 +17,7 @@ class API {
         }
 
         const response = await fetch(this.url, options);
-        return await response.text();
+        const response_text = await response.text();
+        return response_text;
     }
 }
