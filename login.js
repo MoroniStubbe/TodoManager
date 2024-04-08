@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
         error_div.innerHTML = "";
 
         var error = await account.log_in(username, password);
-        if (error !== "") {
+        if (error === "" || error === "already logged in") {
+            window.location.href = "http://localhost/TodoManager/";
+        }
+        else{
             error_div.innerHTML = error;
         }
     }
