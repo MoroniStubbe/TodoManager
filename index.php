@@ -25,14 +25,9 @@ if (isset($_SESSION["account"])) {
 
 <body>
     <nav>
-        <div id="nav-left">
-            <a href="">
-                <div>To Do</div>
-            </a>
-        </div>
         <div id="nav-right">
-            <a href="">
-                <div>Mijn To Do</div>
+            <a href="?create_todo_list">
+                <div>Nieuwe Lijst</div>
             </a>
             <?php 
                 if ($account->is_logged_in()){
@@ -48,9 +43,6 @@ if (isset($_SESSION["account"])) {
                     </a>';
                 }
             ?>
-            <a href="">
-                <div>Nieuwe Lijst</div>
-            </a>
         </div>
     </nav>
     <main>

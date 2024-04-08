@@ -36,12 +36,6 @@ body nav div a:hover {
   background-color: lightskyblue;
   color: black;
 }
-body nav #nav-left {
-  float: left;
-}
-body nav #nav-left a {
-  float: inherit;
-}
 body nav #nav-right {
   float: right;
 }
