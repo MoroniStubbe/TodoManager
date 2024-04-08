@@ -5,21 +5,18 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-
 body nav {
   width: 100vw;
   height: 10vh;
   margin: 0;
   background-color: lightblue;
 }
-
 body nav div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 10vh;
 }
-
 body nav div a {
   height: 10vh;
   text-align: center;
@@ -27,37 +24,30 @@ body nav div a {
   color: white;
   text-decoration: none;
 }
-
 @media (max-aspect-ratio: 1.778) {
   body nav div a {
     font-size: 1.7vw;
   }
 }
-
 body nav div a div {
   margin: 0 1vw;
 }
-
 body nav div a:hover {
   background-color: lightskyblue;
   color: black;
   cursor: pointer;
 }
-
 body nav #nav-right {
   float: right;
 }
-
 body nav #nav-right a {
   float: inherit;
 }
-
 body main {
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
 }
-
 body main #about,
 body main #todo-list,
 body main #todo-lists {
@@ -67,7 +57,6 @@ body main #todo-lists {
   margin: 5vh 0;
   background-color: lightblue;
 }
-
 body main #about h1,
 body main #todo-list h1,
 body main #todo-lists h1 {
@@ -77,16 +66,13 @@ body main #todo-lists h1 {
   font-size: 5vh;
   overflow-wrap: break-word;
 }
-
 @media (max-aspect-ratio: 1.778) {
-
   body main #about h1,
   body main #todo-list h1,
   body main #todo-lists h1 {
     font-size: 2.8vw;
   }
 }
-
 body main #about #about-text-container,
 body main #about ul,
 body main #todo-list #about-text-container,
@@ -100,9 +86,7 @@ body main #todo-lists ul {
   margin: 2vh auto;
   font-size: 2vh;
 }
-
 @media (max-aspect-ratio: 1.778) {
-
   body main #about #about-text-container,
   body main #about ul,
   body main #todo-list #about-text-container,
@@ -112,7 +96,6 @@ body main #todo-lists ul {
     font-size: 1.1vw;
   }
 }
-
 body main #about #about-text-container #about-text,
 body main #about ul #about-text,
 body main #todo-list #about-text-container #about-text,
@@ -125,7 +108,6 @@ body main #todo-lists ul #about-text {
   margin: 1vw 1vw;
   background-color: whitesmoke;
 }
-
 body main #about #about-text-container #about-text p,
 body main #about ul #about-text p,
 body main #todo-list #about-text-container #about-text p,
@@ -135,7 +117,6 @@ body main #todo-lists ul #about-text p {
   width: 19vw;
   margin: 1vh auto;
 }
-
 body main #about #about-text-container li,
 body main #about ul li,
 body main #todo-list #about-text-container li,
@@ -150,7 +131,6 @@ body main #todo-lists ul li {
   list-style-type: none;
   cursor: pointer;
 }
-
 body main #about #about-text-container li div,
 body main #about #about-text-container li a,
 body main #about ul li div,
@@ -168,7 +148,6 @@ body main #todo-lists ul li a {
   margin: 1vh auto;
   text-decoration: none;
 }
-
 body main #about #about-text-container .checked,
 body main #about ul .checked,
 body main #todo-list #about-text-container .checked,
@@ -178,6 +157,4 @@ body main #todo-lists ul .checked {
   background-color: palegreen;
   color: limegreen;
   text-decoration: line-through;
-}
-
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */

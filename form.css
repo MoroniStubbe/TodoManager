@@ -8,7 +8,6 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-
 body main {
   width: 25vw;
   border: solid 0.3vw;
@@ -16,7 +15,6 @@ body main {
   margin: 5vh 0;
   background-color: lightblue;
 }
-
 body main h1 {
   width: 23vw;
   margin: 3vh auto;
@@ -24,13 +22,11 @@ body main h1 {
   font-size: 5vh;
   overflow-wrap: break-word;
 }
-
 @media (max-aspect-ratio: 1.778) {
   body main h1 {
     font-size: 2.8vw;
   }
 }
-
 body main #container {
   display: flex;
   flex-flow: column;
@@ -42,13 +38,11 @@ body main #container {
   margin: 2vh auto;
   font-size: 2vh;
 }
-
 @media (max-aspect-ratio: 1.778) {
   body main #container {
     font-size: 1.1vw;
   }
 }
-
 body main #container div {
   display: flex;
   flex-flow: column;
@@ -60,7 +54,6 @@ body main #container div {
   background-color: whitesmoke;
   list-style-type: none;
 }
-
 body main #container div label,
 body main #container div input,
 body main #container div button,
@@ -68,14 +61,14 @@ body main #container div div {
   width: 19vw;
   margin: 1vh auto;
 }
-
+body main #container div #delete_account {
+  color: white;
+  background-color: red;
+}
 body main #container #error {
   text-align: center;
   color: red;
 }
-
 body main #container .hidden {
   display: none;
-}
-
-/*# sourceMappingURL=form.css.map */
+}/*# sourceMappingURL=form.css.map */
