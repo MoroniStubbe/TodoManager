@@ -6,12 +6,12 @@ class Database
     public $dbname;
     public $pdo;
 
-    public function __construct($host, $dbname, $username, $password)
+    public function __construct($config)
     {
         try {
-            $this->host = $host;
-            $this->dbname = $dbname;
-            $this->pdo = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
+            $this->host = $config->host;
+            $this->dbname = $config->dbname;
+            $this->pdo = new PDO("mysql:host=" . $config->host . ";dbname=" . $config->dbname, $config->username, $config->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->pdo;
         } catch (PDOException $e) {
