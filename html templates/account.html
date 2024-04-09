@@ -3,25 +3,39 @@
 
 <head>
     <title>Account</title>
+    <link rel="stylesheet" href="form.css">
     <script src="/TodoManager/js classes/api.js"></script>
     <script src="/TodoManager/js classes/account.js"></script>
     <script src="/TodoManager/account.js"></script>
 </head>
 
 <body>
-    <label for="username">Change Username:</label>
-    <input type="text" id="username" placeholder="Enter your username">
-    <button id="change_username">Change Username</button><br><br><br>
+    <main>
+        <h1>Account</h1>
 
-    <label for="password">Change Password:</label>
-    <input type="password" id="password" placeholder="Enter your password"><br><br>
+        <div id="container">
+            <div>
+                <label for="username">Verander gebruikersnaam:</label>
+                <input type="text" id="username">
+                <button id="change_username">Verander gebruikersnaam</button>
+            </div>
 
-    <label for="password_confirm">Confirm Password:</label>
-    <input type="password" id="password_confirm" placeholder="Confirm your password">
-    <button id="change_password">Change Password</button><br><br><br>
+            <div>
+                <label for="password">Verander wachtwoord:</label>
+                <input type="password" id="password">
 
-    <button id="delete_account">Delete Account</button>
-    <div id="error"></div>
+                <label for="password_confirm">Herhaal wachtwoord:</label>
+                <input type="password" id="password_confirm">
+                <button id="change_password">Verander wachtwoord</button>
+            </div>
+
+            <div>
+                <button id="delete_account">Verwijder account</button>
+            </div>
+
+            <div id="error" class="hidden"></div>
+        </div>
+    </main>
 </body>
 
 </html>
