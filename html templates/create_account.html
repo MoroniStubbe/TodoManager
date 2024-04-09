@@ -2,25 +2,38 @@
 <html>
 
 <head>
-    <title>Create Account</title>
+    <title>Maak Account</title>
+    <link rel="stylesheet" href="form.css">
     <script src="/TodoManager/js classes/api.js"></script>
     <script src="/TodoManager/js classes/account.js"></script>
     <script src="/TodoManager/create_account.js"></script>
 </head>
 
 <body>
-    <label for="username">Username:</label>
-    <input type="text" id="username" placeholder="Enter your username"><br><br>
+    <main>
+        <h1>Maak Account</h1>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" placeholder="Enter your password"><br><br>
+        <div id="container">
+            <div>
+                <label for="username">Gebruikersnaam:</label>
+                <input type="text" id="username">
+            </div>
 
-    <label for="password_confirm">Confirm Password:</label>
-    <input type="password" id="password_confirm" placeholder="Confirm your password"><br><br>
+            <div>
+                <label for="password">Wachtwoord:</label>
+                <input type="password" id="password">
 
-    <button id="create_account">Create Account</button>
+                <label for="password_confirm">Herhaal wachtwoord:</label>
+                <input type="password" id="password_confirm">
+            </div>
 
-    <div id="error"></div>
+            <div>
+                <button id="create_account">Maak account</button>
+            </div>
+
+            <div id="error" class="hidden"></div>
+        </div>
+    </main>
 </body>
 
 </html>

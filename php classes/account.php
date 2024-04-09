@@ -178,6 +178,11 @@ class Account
         return "";
     }
 
+    public function is_logged_in()
+    {
+        return $this->logged_in;
+    }
+
     //returns empty string by default
     //error returns: "not logged in"
     public function log_out()
