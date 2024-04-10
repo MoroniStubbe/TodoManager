@@ -11,7 +11,6 @@ class Database
         try {
             $this->host = $host;
             $this->dbname = $dbname;
-            print($password);
             $this->pdo = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
             $this->host = $config->host;
             $this->dbname = $config->dbname;

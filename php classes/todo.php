@@ -1,16 +1,16 @@
 <?php
 
-require_once("database.php");
-
-class todo
+class Todo
 {
-    private $database;
-    private $id;
-    public $text;
+    public $title;
+    public $description;
+    public $dueDate;
 
-    public function __construct($database)
+    public function __construct($title, $description, $dueDate)
     {
-        $this->database = $database;
+        $this->title = $title;
+        $this->description = $description;
+        $this->dueDate = $dueDate;
     }
 
 
