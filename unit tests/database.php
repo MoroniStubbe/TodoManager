@@ -1,7 +1,8 @@
 <?php
 
-include_once("../php classes/database.php");
-$database = new Database("localhost", "todo_manager", "root", "");
+require_once("../php classes/database.php");
+$database_config = json_decode(file_get_contents("../database_config.json"));
+$database = new Database($database_config);
 
 //Test create()
 // $database->create("accounts", ["first_name"=> "asd", "last_name"=>"asd", "password_hash"=>"asd"]);

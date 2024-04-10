@@ -10,6 +10,6 @@ if (isset($_SESSION["account"])) {
     $account->import($_SESSION["account"]);
 }
 
-if ($account->is_logged_in()) {
-    echo file_get_contents("html templates/account.html");
+if (!$account->is_logged_in()) {
+    echo file_get_contents("html templates/login.html");
 }

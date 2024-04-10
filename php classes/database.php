@@ -6,13 +6,16 @@ class Database
     public $dbname;
     public $pdo;
 
-    public function __construct($host, $dbname, $username, $password)
+    public function __construct($config)
     {
         try {
             $this->host = $host;
             $this->dbname = $dbname;
             print($password);
             $this->pdo = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
+            $this->host = $config->host;
+            $this->dbname = $config->dbname;
+            $this->pdo = new PDO("mysql:host=" . $config->host . ";dbname=" . $config->dbname, $config->username, $config->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->pdo;
         } catch (PDOException $e) {
@@ -74,13 +77,13 @@ class Database
     //returns true on success
     public function update($table, $column_value_pairs, $where = [])
     {
-        if(count($column_value_pairs) > 0){
+        if (count($column_value_pairs) > 0) {
             $sets = [];
-    
+
             foreach ($column_value_pairs as $column => $value) {
                 $sets[] = "$column = :$column";
             }
-    
+
             $set_sql = implode(", ", $sets);
             $where_sql = $this->create_where_clause($where);
             $sql = "UPDATE $table SET $set_sql" . $where_sql;
@@ -88,7 +91,7 @@ class Database
             $statement->execute(array_merge($column_value_pairs, $where));
             return true;
         }
-        
+
         return false;
     }
 

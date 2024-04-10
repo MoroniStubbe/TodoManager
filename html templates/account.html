@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Account</title>
+    <link rel="stylesheet" href="form.css">
+    <script src="/TodoManager/js classes/api.js"></script>
+    <script src="/TodoManager/js classes/account.js"></script>
+    <script src="/TodoManager/account.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Account</h1>
+
+        <div id="container">
+            <div>
+                <label for="username">Verander gebruikersnaam:</label>
+                <input type="text" id="username">
+                <button id="change_username">Verander gebruikersnaam</button>
+            </div>
+
+            <div>
+                <label for="password">Verander wachtwoord:</label>
+                <input type="password" id="password">
+
+                <label for="password_confirm">Herhaal wachtwoord:</label>
+                <input type="password" id="password_confirm">
+                <button id="change_password">Verander wachtwoord</button>
+            </div>
+
+            <div>
+                <button id="delete_account">Verwijder account</button>
+            </div>
+
+            <div id="error" class="hidden"></div>
+        </div>
+    </main>
+</body>
+
+</html>

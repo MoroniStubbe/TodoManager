@@ -1,0 +1,130 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+
+    nav {
+        width: 100vw;
+        height: 10vh;
+        margin: 0;
+        background-color: lightblue;
+
+        div {
+            display: flex;
+            justify-content: center; //horizontal
+            align-items: center; //vertical
+            height: 10vh;
+
+            a {
+                height: 10vh;
+                text-align: center;
+                font-size: 3vh;
+                color: white;
+                text-decoration: none;
+
+                @media (max-aspect-ratio: 1.778) {
+                    font-size: 1.7vw; //= vh / 1.778 (seems to work)
+                }
+
+                div {
+                    margin: 0 1vw;
+                }
+            }
+
+            a:hover {
+                background-color: lightskyblue;
+                color: black;
+                cursor: pointer;
+            }
+        }
+
+        #nav-right {
+            float: right;
+
+            a {
+                float: inherit;
+            }
+        }
+    }
+
+    main {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100vw;
+
+        #about,
+        #todo-list,
+        #todo-lists {
+            width: 25vw;
+            border: solid 0.3vw;
+            border-radius: 1vw;
+            margin: 5vh 0;
+            background-color: lightblue;
+
+            h1 {
+                width: 23vw;
+                margin: 3vh auto;
+                text-align: center;
+                font-size: 5vh;
+                overflow-wrap: break-word;
+
+                @media (max-aspect-ratio: 1.778) {
+                    font-size: 2.8vw; //= vh / 1.778 (seems to work)
+                }
+            }
+
+            #about-text-container,
+            ul {
+                width: 23vw;
+                padding: 0;
+                border: 0.1vw solid whitesmoke;
+                border-radius: 0.5vw;
+                margin: 2vh auto;
+                font-size: 2vh;
+
+                @media (max-aspect-ratio: 1.778) {
+                    font-size: 1.1vw; //= vh / 1.778 (seems to work)
+                }
+
+                #about-text {
+                    width: 21vw;
+                    border: 0.1vw solid whitesmoke;
+                    border-radius: 0.4vw;
+                    margin: 1vw 1vw;
+                    background-color: whitesmoke;
+
+                    p {
+                        width: 19vw;
+                        margin: 1vh auto;
+                    }
+                }
+
+                li {
+                    width: 21vw;
+                    border: 0.1vw solid whitesmoke;
+                    border-radius: 0.4vw;
+                    margin: 2vh auto;
+                    background-color: whitesmoke;
+                    list-style-type: none;
+                    cursor: pointer;
+
+                    div,
+                    a {
+                        display: block;
+                        width: 19vw;
+                        margin: 1vh auto;
+                        text-decoration: none;
+                    }
+                }
+
+                .checked {
+                    background-color: palegreen;
+                    color: limegreen;
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+}
