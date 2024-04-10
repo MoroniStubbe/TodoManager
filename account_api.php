@@ -6,11 +6,11 @@ header("Content-Type: application/json");
 $input = json_decode(file_get_contents('php://input'));
 
 if (isset($input->action)) {
-    require_once("php classes/database.php");
     require_once("php classes/account.php");
 
     session_start();
-    $database = new Database("localhost", "todo_manager", "root", "");
+    $database_config = json_decode(file_get_contents("database_config.json"));
+    $database = new Database($database_config);
     $account = new Account($database);
 
     if (isset($_SESSION["account"])) {
