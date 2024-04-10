@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (password !== password_confirm) {
             error_div.innerHTML = "passwords don't match";
+            error_div.classList.remove("hidden");
             return false;
         }
 

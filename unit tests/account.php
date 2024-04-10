@@ -1,7 +1,8 @@
 <?php
-require_once("database.php");
 require_once("../php classes/account.php");
 
+$database_config = json_decode(file_get_contents("../database_config.json"));
+$database = new Database($database_config);
 $account = new Account($database);
 // $account->set_username("asd");
 // $account->set_password("asdasdasdasd");
