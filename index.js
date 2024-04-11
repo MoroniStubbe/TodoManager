@@ -2,6 +2,7 @@ function toggleCheck(item) {
     item.classList.toggle("checked");
 }
 
+
 document.addEventListener("DOMContentLoaded",
     function () {
         if (document.getElementById("log_out")) {

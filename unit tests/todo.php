@@ -1,10 +1,11 @@
 <?php
 
-require_once ("database.php");
-
 require_once ("../php classes/todo.php");
 
-$database = new Database("localhost", "todo_manager", "root", "root");
+require_once ("database.php");
+
+$database_config = json_decode(file_get_contents("../database_config.json"));
+$database = new Database($database_config);
 
 $todo = new Todo($database);
 

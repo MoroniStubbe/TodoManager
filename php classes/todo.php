@@ -2,15 +2,14 @@
 
 class Todo
 {
+    private $database;
     public $title;
-    public $description;
+    public $text;
     public $dueDate;
 
-    public function __construct($title, $description, $dueDate)
+    public function __construct($database)
     {
-        $this->title = $title;
-        $this->description = $description;
-        $this->dueDate = $dueDate;
+        $this->database = $database;
     }
 
 

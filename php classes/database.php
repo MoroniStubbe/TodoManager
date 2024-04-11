@@ -9,9 +9,6 @@ class Database
     public function __construct($config)
     {
         try {
-            $this->host = $host;
-            $this->dbname = $dbname;
-            $this->pdo = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
             $this->host = $config->host;
             $this->dbname = $config->dbname;
             $this->pdo = new PDO("mysql:host=" . $config->host . ";dbname=" . $config->dbname, $config->username, $config->password);
