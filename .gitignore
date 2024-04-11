@@ -1,3 +1,4 @@
 .vscode
+.idea
 *.css.map
 database_config.json
