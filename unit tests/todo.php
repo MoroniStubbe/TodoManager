@@ -11,4 +11,14 @@ $todo = new Todo($database);
 
 $todo->text = "testText";
 
+$todo->todo_list_id = 1;
+
 $todo->create();
+
+//$todo = $todo->read();
+//
+//$todo->update();
+//
+//$todo->delete();
+
+
