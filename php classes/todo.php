@@ -2,10 +2,13 @@
 
 class Todo
 {
+    public $id;
     private $database;
     public $title;
     public $text;
     public $dueDate;
+    public $todo_list_id;
+
 
     public function __construct($database)
     {
@@ -19,7 +22,9 @@ class Todo
         $this->database->create(
             "todo",
             [
-                "text" => $this->text
+                "text" => $this->text,
+                "todo_list_id" => $this->todo_list_id
+
             ]
         );
     }
@@ -28,10 +33,8 @@ class Todo
     public function read($id = null)
     {
         if ($id !== null) {
-            // Als er een $id is opgegeven, haal dan alleen dat specifieke record op
             return $this->database->read("todo", ["*"], ["id" => $id]);
         } else {
-            // Als er geen $id is opgegeven, haal dan alle records op
             return $this->database->read("todo");
         }
     }
@@ -40,7 +43,6 @@ class Todo
     public function update($id, $columns = [])
     {
         if (count($columns) > 0) {
-            // Zorg ervoor dat $id is ingesteld
             $this->id = $id;
 
             // Update alleen de opgegeven kolommen voor het record met de opgegeven $id
@@ -50,8 +52,15 @@ class Todo
 
     public function delete()
     {
-        // Verwijder het record met de opgegeven $id
-        $this->database->delete("todo", ["id" => $this->id]);
+        // Controleer of $this->id is ingesteld voordat je het gebruikt
+        if ($this->id !== null) {
+            // Verwijder het record met de opgegeven $id
+            $this->database->delete("todo", ["id" => $this->id]);
+        } else {
+            // Geef een foutmelding of neem andere gepaste actie als $this->id niet is ingesteld
+            // Dit is een voorbeeld, je kunt dit aanpassen aan jouw behoeften
+            echo "Kan geen todo verwijderen zonder ID.";
+        }
     }
 }
 
