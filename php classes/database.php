@@ -25,6 +25,14 @@ class Database
         $tables = $statement->fetchAll(PDO::FETCH_COLUMN);
         return $tables;
     }
+
+    private function get_columns($table)
+    {
+        $sql = "DESCRIBE $table";
+        $statement = $this->pdo->query($sql);
+        $columns = $statement->fetchAll(PDO::FETCH_COLUMN);
+        return $columns;
+    }
     //WARNING: This function is vulnerable to sql injection if table and columns are set by user
     //$column_value_pairs is an associative array: [column => value]
     public function create($table, $column_value_pairs)
