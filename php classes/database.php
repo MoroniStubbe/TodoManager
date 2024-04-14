@@ -13,7 +13,6 @@ class Database
             $this->dbname = $config->dbname;
             $this->pdo = new PDO("mysql:host=" . $config->host . ";dbname=" . $config->dbname, $config->username, $config->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->pdo;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
