@@ -20,6 +20,7 @@ class Database
         }
     }
 
+    //returns array of tables from database
     private function get_tables()
     {
         $sql = "SHOW TABLES";
@@ -28,6 +29,7 @@ class Database
         return $tables;
     }
 
+    //returns array of columns from a table
     private function get_columns($table)
     {
         $sql = "DESCRIBE $table";
@@ -36,6 +38,7 @@ class Database
         return $columns;
     }
 
+    //gets tables and columns of databse as assoc array
     public function get_database_structure()
     {
         $tables = $this->get_tables();
@@ -46,11 +49,39 @@ class Database
         return $structure;
     }
 
-    //WARNING: This function is vulnerable to sql injection if table and columns are set by user
+    //returns true if table exists, else returns false
+    private function check_table_exists($table)
+    {
+        if (in_array($table, array_keys($this->tables))) {
+            return true;
+        }
+        return false;
+    }
+
+    //assumes table exists
+    //returns true if column exists, else returns false
+    private function check_column_exists($table, $column)
+    {
+        if (in_array($column, $this->tables[$table])) {
+            return true;
+        }
+        return false;
+    }
+
     //$column_value_pairs is an associative array: [column => value]
     public function create($table, $column_value_pairs)
     {
+        if (!$this->check_table_exists($table)) {
+            return "table not found";
+        }
+
         $columns = array_keys($column_value_pairs);
+        foreach ($columns as $column) {
+            if (!$this->check_column_exists($table, $column)) {
+                return "column not found";
+            }
+        }
+
         $columns_imploded = implode(", ", $columns);
         $placeholders = ":" . implode(', :', $columns);
         $sql = "INSERT INTO $table ($columns_imploded) VALUES ($placeholders)";
@@ -77,13 +108,33 @@ class Database
         }
     }
 
-    //WARNING: This function is vulnerable to sql injection if table, columns or where_columns are set by user
     //Selects all columns by default
     //Has no where clause by default
     //$where is an associative array: [column => value]
     //$where only works with simple equals operations
     public function read($table, $columns = ["*"], $where = [])
     {
+        if (!$this->check_table_exists($table)) {
+            return "table not found";
+        }
+
+        if ($columns !== ["*"]) {
+            foreach ($columns as $column) {
+                if (!$this->check_column_exists($table, $column)) {
+                    return "column not found";
+                }
+            }
+        }
+
+        if ($where !== []) {
+            $where_columns = array_keys($where);
+            foreach ($where_columns as $column) {
+                if (!$this->check_column_exists($table, $column)) {
+                    return "column not found";
+                }
+            }
+        }
+
         $columns_imploded = implode(", ", $columns);
         $where_sql = $this->create_where_clause($where);
         $sql = "SELECT " . $columns_imploded . " FROM " . $table . $where_sql;
@@ -93,13 +144,31 @@ class Database
         return $fetchAll;
     }
 
-    //WARNING: This function is vulnerable to sql injection if table, set_columns or where_columns are set by user
     //Has no where clause by default
     //$where is an associative array: [column => value]
     //$where only works with simple equals operations
-    //returns true on success
     public function update($table, $column_value_pairs, $where = [])
     {
+        if (!$this->check_table_exists($table)) {
+            return "table not found";
+        }
+
+        $columns = array_keys($column_value_pairs);
+        foreach ($columns as $column) {
+            if (!$this->check_column_exists($table, $column)) {
+                return "column not found";
+            }
+        }
+
+        if ($where !== []) {
+            $where_columns = array_keys($where);
+            foreach ($where_columns as $column) {
+                if (!$this->check_column_exists($table, $column)) {
+                    return "column not found";
+                }
+            }
+        }
+
         if (count($column_value_pairs) > 0) {
             $sets = [];
 
@@ -112,18 +181,27 @@ class Database
             $sql = "UPDATE $table SET $set_sql" . $where_sql;
             $statement = $this->pdo->prepare($sql);
             $statement->execute(array_merge($column_value_pairs, $where));
-            return true;
         }
-
-        return false;
     }
 
-    //WARNING: This function is vulnerable to sql injection if table or where_columns are set by user
     //Has no where clause by default
     //$where is an associative array: [column => value]
     //$where only works with simple equals operations
     public function delete($table, $where = [])
     {
+        if (!$this->check_table_exists($table)) {
+            return "table not found";
+        }
+
+        if ($where !== []) {
+            $where_columns = array_keys($where);
+            foreach ($where_columns as $column) {
+                if (!$this->check_column_exists($table, $column)) {
+                    return "column not found";
+                }
+            }
+        }
+
         $where_sql = $this->create_where_clause($where);
         $sql = "DELETE FROM $table" . $where_sql;
         $statement = $this->pdo->prepare($sql);
