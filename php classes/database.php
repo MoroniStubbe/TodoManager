@@ -5,6 +5,7 @@ class Database
     public $host;
     public $dbname;
     public $pdo;
+    public $tables;
 
     public function __construct($config)
     {
@@ -13,6 +14,7 @@ class Database
             $this->dbname = $config->dbname;
             $this->pdo = new PDO("mysql:host=" . $config->host . ";dbname=" . $config->dbname, $config->username, $config->password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->tables = $this->get_database_structure();
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -33,6 +35,17 @@ class Database
         $columns = $statement->fetchAll(PDO::FETCH_COLUMN);
         return $columns;
     }
+
+    public function get_database_structure()
+    {
+        $tables = $this->get_tables();
+        $structure = [];
+        foreach ($tables as $table) {
+            $structure[$table] = $this->get_columns($table);
+        }
+        return $structure;
+    }
+
     //WARNING: This function is vulnerable to sql injection if table and columns are set by user
     //$column_value_pairs is an associative array: [column => value]
     public function create($table, $column_value_pairs)
