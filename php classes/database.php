@@ -18,6 +18,13 @@ class Database
         }
     }
 
+    private function get_tables()
+    {
+        $sql = "SHOW TABLES";
+        $statement = $this->pdo->query($sql);
+        $tables = $statement->fetchAll(PDO::FETCH_COLUMN);
+        return $tables;
+    }
     //WARNING: This function is vulnerable to sql injection if table and columns are set by user
     //$column_value_pairs is an associative array: [column => value]
     public function create($table, $column_value_pairs)
